@@ -69,6 +69,7 @@
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
+      flex-shrink: 0 !important;
     }
 
     .alloc-header {
@@ -152,6 +153,7 @@
       display: flex !important;
       flex-direction: column !important;
       gap: 20px !important;
+      min-width: 0 !important;
     }
 
     /* Glassmorphism Semi-Transparan Kartu Utama */
@@ -214,6 +216,7 @@
       font-weight: 700 !important;
       padding: 5px 11px !important;
       border-radius: 999px !important;
+      flex-shrink: 0 !important;
     }
 
     /* Kotak Nominal (Putih Cerah Transparan Seragam dengan Formula Alokasi) */
@@ -427,6 +430,7 @@
       border: none !important;
       border-radius: 13px !important;
       height: 48px !important;
+      padding: 0 18px !important;
       font-size: 13.5px !important;
       font-weight: 800 !important;
       cursor: pointer !important;
@@ -680,7 +684,7 @@
       transform: translateX(18px);
     }
 
-    /* Proyeksi Percepatan (Kotak Dalam Putih Cerah Transparan Seragam dengan Formula Alokasi) */
+    /* Proyeksi Percepatan */
     .rate-pill {
       background: rgba(226, 243, 212, 0.95) !important;
       border: 1px solid rgba(196, 224, 174, 0.9) !important;
@@ -835,9 +839,57 @@
       }
     }
 
-    @media (max-width: 560px) {
-      .mode-grid, .source-grid, .pc-mini-stats {
+    @media (max-width: 600px) {
+      .main-wrapper .content-area {
+        padding: 18px 14px 32px !important;
+      }
+
+      .alloc-card {
+        padding: 18px 16px !important;
+      }
+
+      .topbar {
+        padding: 0 12px !important;
+        gap: 8px !important;
+      }
+
+      /* Sembunyikan teks "2026 • Smart Allocation" di HP agar header tidak berantakan */
+      .semester-pill {
+        display: none !important;
+      }
+
+      /* Rapikan kapsul profil .user-chip di kanan agar 1 baris & tidak terpotong */
+      .user-chip {
+        padding: 4px 8px 4px 12px !important;
+        gap: 8px !important;
+      }
+
+      .user-text strong,
+      .user-text span {
+        white-space: nowrap !important;
+        max-width: 110px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .mode-grid,
+      .source-grid,
+      .pc-mini-stats,
+      .dp-actions {
         grid-template-columns: 1fr !important;
+      }
+
+      .btn-confirm-alloc {
+        width: 100% !important;
+        white-space: nowrap !important;
+      }
+
+      .btn-confirm-alloc svg {
+        flex-shrink: 0 !important;
+      }
+
+      .btn-cancel-alloc {
+        width: 100% !important;
       }
     }
   </style>
