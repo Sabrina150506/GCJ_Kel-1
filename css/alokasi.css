@@ -778,3 +778,61 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   PERBAIKAN TASKBAR ATAS & TOMBOL KONFIRMASI ALOKASI DI HP
+   ========================================================= */
+@media (max-width: 600px) {
+  .topbar {
+    padding: 0 12px !important;
+    height: 60px !important;
+  }
+
+  /* Sembunyikan teks "2026 • Smart Allocation" di HP agar header bersih */
+  .topbar-left > *:not(.menu-toggle) {
+    display: none !important;
+  }
+
+  /* Rapikan kapsul profil di kanan agar tidak membungkus teks jurusan */
+  .topbar-right .user-pill {
+    max-width: none !important;
+    padding: 4px 12px 4px 6px !important;
+    gap: 8px !important;
+  }
+
+  .topbar-right .user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .topbar-right .user-text strong,
+  .topbar-right .user-text span,
+  .topbar-right .user-text small {
+    white-space: nowrap !important;
+    max-width: 115px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Susun tombol "Konfirmasi Alokasi & Setor" dan "Batal" atas-bawah agar lega & simetris */
+  .dp-actions {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .btn-confirm-alloc {
+    width: 100%;
+    padding: 0 16px;
+    white-space: nowrap;
+  }
+
+  .btn-confirm-alloc svg {
+    flex-shrink: 0;
+  }
+
+  .btn-cancel-alloc {
+    width: 100%;
+  }
+}

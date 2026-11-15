@@ -935,6 +935,9 @@ body,
 /* =========================================================
    PERBAIKAN FILTER TABS & TOOLBAR RESPONSIF DI HP
    ========================================================= */
+/* =========================================================
+   PERBAIKAN FILTER TABS & TOOLBAR RESPONSIF DI HP
+   ========================================================= */
 @media (max-width: 768px) {
   .filter-toolbar {
     flex-direction: column;
@@ -966,6 +969,9 @@ body,
   }
 
   .search-box {
+    flex: none !important;
+    height: 42px !important;
+    min-height: 42px !important;
     max-width: 100%;
     width: 100%;
     min-width: 0;
@@ -973,6 +979,7 @@ body,
 
   .btn-create-goal {
     width: 100%;
+    height: 42px;
     justify-content: center;
   }
 }

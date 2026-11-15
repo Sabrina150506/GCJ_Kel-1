@@ -948,3 +948,25 @@
     white-space: nowrap;
   }
 }
+
+/* =========================================================
+   PERBAIKAN BARIS NOTIFIKASI & PENGINGAT DI HP (SETTINGS)
+   ========================================================= */
+@media (max-width: 640px) {
+  .notif-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nr-left {
+    align-items: flex-start;
+  }
+
+  .nr-right {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid rgba(190, 214, 174, 0.55);
+  }
+}
