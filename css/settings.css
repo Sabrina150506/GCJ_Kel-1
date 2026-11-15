@@ -911,3 +911,40 @@
   color: var(--white);
   border-color: var(--lime);
 }
+
+/* =========================================================
+   PERBAIKAN TASKBAR ATAS SETTINGS DI HP
+   ========================================================= */
+@media (max-width: 640px) {
+  .topbar {
+    padding: 0 12px !important;
+    gap: 8px !important;
+  }
+
+  .year-badge {
+    display: none !important;
+  }
+
+  .topbar-right {
+    gap: 8px !important;
+    min-width: 0;
+  }
+
+  .topbar-right .verified-badge {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+  }
+
+  .user-pill {
+    padding: 3px 10px 3px 4px !important;
+    max-width: 135px;
+  }
+
+  .user-text strong {
+    max-width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

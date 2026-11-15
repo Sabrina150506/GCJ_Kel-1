@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     activeWalletId: 'w1',
     wallets: defaultWallets,
     notifs: [true, true, true],
-    avatarUrl: user.user_metadata?.avatar_url || localStorage.getItem(`sg_avatar_${user.id}`) || ''
+    avatarUrl: profile?.avatar_url || user.user_metadata?.avatar_url || localStorage.getItem(`sg_avatar_${user.id}`) || ''
   };
 
   const localPrefs = JSON.parse(localStorage.getItem(`sg_prefs_${user.id}`) || '{}');
@@ -102,6 +102,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   if (user.user_metadata?.avatar_url) {
     settings.avatarUrl = user.user_metadata.avatar_url;
+  }
+  if (profile?.avatar_url) {
+    settings.avatarUrl = profile.avatar_url;
   }
   if (!Array.isArray(settings.wallets) || settings.wallets.length === 0) {
     settings.wallets = defaultWallets;
@@ -460,7 +463,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         universitas: settings.univ,
         jurusan: settings.faculty,
         semester: settings.semester,
-        uang_saku_bulanan: settings.allowance
+        uang_saku_bulanan: settings.allowance,
+        avatar_url: settings.avatarUrl || null
       }, { onConflict: 'user_id' });
 
     if (upsertErr) {
@@ -472,30 +476,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     const monthlyAlloc = Math.round((settings.allowance * settings.allocPct) / 100);
     const activeWalletObj = settings.wallets.find((w) => w.id === settings.activeWalletId) || settings.wallets[0];
 
-    const authPayload = {
-      full_name: settings.fullName,
-      semester: settings.semester,
-      monthly_allowance: settings.allowance,
-      saving_pct: settings.allocPct,
-      monthly_alloc: monthlyAlloc
-    };
     if (settings.avatarUrl) {
-      authPayload.avatar_url = settings.avatarUrl;
       localStorage.setItem(`sg_avatar_${user.id}`, settings.avatarUrl);
     }
 
-    const { error: authErr } = await window.sb.auth.updateUser({ data: authPayload });
-    if (authErr && settings.avatarUrl) {
-      await window.sb.auth.updateUser({
-        data: {
-          full_name: settings.fullName,
-          semester: settings.semester,
-          monthly_allowance: settings.allowance,
-          saving_pct: settings.allocPct,
-          monthly_alloc: monthlyAlloc
-        }
-      });
-    }
+    await window.sb.auth.updateUser({
+      data: {
+        full_name: settings.fullName,
+        semester: settings.semester,
+        monthly_allowance: settings.allowance,
+        saving_pct: settings.allocPct,
+        monthly_alloc: monthlyAlloc
+      }
+    });
 
     localStorage.setItem(`sg_prefs_${user.id}`, JSON.stringify({
       semester: settings.semester,

@@ -1361,3 +1361,61 @@ label,
   gap: 6px;
   box-shadow: 0 2px 8px rgba(38, 67, 13, 0.04);
 }
+/* =========================================================
+   PERBAIKAN RESPONSIF HP (TASKBAR ATAS & ANTI-OFFSIDE)
+   ========================================================= */
+@media (max-width: 600px) {
+  .topbar {
+    padding: 0 12px !important;
+    gap: 8px !important;
+  }
+
+  .topbar-left,
+  .topbar-right {
+    gap: 8px !important;
+    min-width: 0;
+  }
+
+  /* Sembunyikan teks tagline & badge tambahan di HP agar profil tidak terpotong */
+  .tagline-pill,
+  .topbar-right .verified-badge,
+  .topbar .verified-badge,
+  .topbar .btn-back-dash,
+  .topbar .year-pill {
+    display: none !important;
+  }
+
+  .user-pill {
+    padding: 3px 10px 3px 4px !important;
+    max-width: 150px;
+  }
+
+  .user-text strong {
+    max-width: 85px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Mencegah semua kartu, grafik & widget melebihi lebar layar HP */
+  .dashboard-content {
+    padding: 16px 14px 28px !important;
+  }
+
+  .dashboard-content > *,
+  .panel-card,
+  .stat-card,
+  .goal-card,
+  .quick-save-card,
+  .welcome-banner {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .dashboard-content svg,
+  .dashboard-content canvas,
+  .dashboard-content img {
+    max-width: 100% !important;
+    height: auto;
+  }
+}

@@ -972,3 +972,58 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   PERBAIKAN RESPONSIF HP (GRAFIK & MINDFUL CARD ANTI-OFFSIDE)
+   ========================================================= */
+@media (max-width: 768px) {
+  .report-chart-grid,
+  .report-bottom-grid,
+  .report-kpi-grid,
+  .ach-cards-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .chart-panel,
+  .mindful-side-card,
+  .alloc-panel,
+  .stats-summary-panel,
+  .rk-card,
+  .ach-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  /* Izinkan grafik di dalam kotak ini di-scroll ke samping tanpa melebar keluar kartu */
+  .chart-canvas-box {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chart-canvas-box svg {
+    max-width: none !important;
+  }
+
+  /* Pastikan teks & gambar di kartu Mindful Thought membungkus rapi sesuai layar */
+  .msc-banner-img {
+    height: 135px;
+  }
+
+  .msc-quote-box blockquote,
+  .cp-header p,
+  .cb-left p,
+  .ach-header h2,
+  .ach-header p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .cb-left {
+    align-items: flex-start;
+  }
+}
