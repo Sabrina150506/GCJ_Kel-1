@@ -1,0 +1,884 @@
+/* =========================================================
+   OVERRIDE GLOBAL WARNA FONT -> HIJAU TUA OLIVE (#26430d)
+   Tanpa mengubah ukuran font, spasi, maupun tata letak
+   ========================================================= */
+:root {
+  --text-dark: #26430d;
+  --text-muted: #4b6b32;
+}
+
+body,
+.app-layout,
+.sidebar,
+.main-area,
+.topbar,
+.dashboard-content,
+h1, h2, h3, h4, h5, h6,
+strong, b,
+input, select, textarea, option, button,
+.sidebar .brand-name,
+.sidebar .profile-meta strong,
+.sidebar .cw-top strong,
+.sidebar .ssc-target-row strong,
+.topbar .tagline-pill,
+.topbar .user-text strong,
+.topbar .icon-btn,
+.topbar .verified-badge {
+  color: #26430d !important;
+}
+
+p, small, label,
+.sidebar .brand-role,
+.sidebar .profile-meta span,
+.sidebar .nav-item:not(.active),
+.sidebar .cw-top p,
+.sidebar .ssc-target-row span,
+.sidebar .sidebar-settings-link,
+.sidebar .semester-footer span,
+.topbar .online-status {
+  color: #4b6b32 !important;
+}
+
+/* Kecualikan teks tombol/badge yang memang berwarna putih atau merah */
+.sidebar .nav-item.active,
+.ms-card.done .ms-pill,
+.ms-card.active .ms-pill,
+.milestones-grid .ms-card:nth-child(1) .ms-pill,
+.milestones-grid .ms-card:nth-child(2) .ms-pill,
+.p-chip.active,
+.p-chip:hover,
+.btn-submit-detail,
+.hp-tab.active,
+.hp-tab:hover {
+  color: #ffffff !important;
+}
+
+.btn-outline-pill.danger {
+  color: #b42318 !important;
+}
+
+/* Top Navigation & Breadcrumb */
+.detail-top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #4b6b32 !important;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-trail a {
+  text-decoration: none;
+  color: #4b6b32 !important;
+  font-weight: 600;
+}
+
+.breadcrumb-trail strong {
+  color: #26430d !important;
+  font-weight: 700;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #467810 !important;
+  text-decoration: none;
+}
+
+.detail-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline-pill {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 10px;
+  padding: 8px 14px;
+  min-height: 38px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #26430d !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-outline-pill:hover {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* Hero Detail Card (Transparan Glassmorphism) */
+.hero-detail-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hdc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hdc-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.hdc-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(232, 244, 224, 0.9);
+  color: #26430d !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hdc-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+
+.badge-mint {
+  background: rgba(226, 242, 214, 0.9);
+  color: #3f6e11 !important;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.badge-cream {
+  background: rgba(248, 243, 212, 0.9);
+  color: #6b6310 !important;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hdc-title-group h1 {
+  font-size: clamp(21px, 2.5vw, 25px);
+  font-weight: 800;
+  color: #26430d !important;
+}
+
+.hdc-eta-box {
+  background: rgba(245, 249, 242, 0.78);
+  border: 1px solid rgba(208, 225, 196, 0.85);
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eta-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #26430d !important;
+}
+
+.eta-item small {
+  display: block;
+  font-size: 10.5px;
+  color: #4b6b32 !important;
+}
+
+.eta-item strong {
+  font-size: 13px;
+  font-weight: 800;
+  color: #26430d !important;
+}
+
+.eta-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(200, 219, 188, 0.85);
+}
+
+/* 3 Kotak Nominal */
+.hdc-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.hdc-stat-box {
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Terkumpul Saat Ini -> Sama dengan Milestone 25% */
+.hdc-stat-box.mint {
+  background: rgba(235, 245, 245, 0.86);
+  border: 1.5px solid #7ab59c;
+}
+
+/* Kekurangan Dana -> Kuning Transparan */
+.hdc-stat-box.cream {
+  background: rgba(252, 249, 224, 0.88);
+  border: 1.5px solid #e6e09e;
+}
+
+/* Total Nilai Sasaran -> Hijau Transparan sama seperti Milestone 50% */
+.hdc-stat-box.neutral {
+  background: rgba(236, 247, 224, 0.88);
+  border: 1.5px solid #a9d556;
+}
+
+.hdc-stat-box span {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #4b6b32 !important;
+}
+
+.hdc-stat-box strong {
+  font-size: clamp(19px, 2vw, 23px);
+  font-weight: 800;
+  color: #26430d !important;
+}
+
+.hdc-stat-box small {
+  font-size: 11px;
+  color: #467810 !important;
+  font-weight: 600;
+}
+
+.hdc-stat-box.cream small {
+  color: #706612 !important;
+}
+
+.hdc-stat-box.neutral small {
+  color: #4b6b32 !important;
+}
+
+.hdc-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.hdc-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: #26430d !important;
+}
+
+.hdc-progress-labels strong {
+  color: #467810 !important;
+}
+
+/* Milestones Section (Transparan Glassmorphism) */
+.milestones-section {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding: 20px 22px;
+}
+
+.milestone-summary-pill {
+  background: rgba(226, 243, 232, 0.9);
+  color: #2e6b4e !important;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ms-card {
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: rgba(246, 250, 243, 0.82);
+  border: 1.5px solid rgba(208, 224, 198, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #26430d !important;
+}
+
+/* Kotak 1: Milestone 25% (Biru-Mint Pastel & Border Teal) */
+.milestones-grid .ms-card:nth-child(1) {
+  background: rgba(235, 245, 245, 0.86);
+  border-color: #7ab59c;
+}
+
+.milestones-grid .ms-card:nth-child(1) .ms-pill {
+  background: #486b18;
+  color: #ffffff !important;
+}
+
+/* Kotak 2: Milestone 50% (Hijau Transparan & Border Hijau Sama dengan Total Nilai Sasaran) */
+.milestones-grid .ms-card:nth-child(2) {
+  background: rgba(236, 247, 224, 0.88);
+  border-color: #a9d556;
+}
+
+.milestones-grid .ms-card:nth-child(2) .ms-pill {
+  background: #8ec31e;
+  color: #ffffff !important;
+}
+
+/* Kotak 3: Milestone 75% (Kuning Krem Transparan) */
+.milestones-grid .ms-card:nth-child(3) {
+  background: rgba(252, 249, 224, 0.88);
+  border-color: #e6e09e;
+}
+
+.milestones-grid .ms-card:nth-child(3) .ms-pill {
+  background: #efeab4;
+  color: #5c5314 !important;
+}
+
+/* Kotak 4: Target 100% (Putih-Hijau Lembut Transparan) */
+.milestones-grid .ms-card:nth-child(4) {
+  background: rgba(246, 250, 244, 0.84);
+  border-color: rgba(208, 224, 198, 0.9);
+}
+
+.milestones-grid .ms-card:nth-child(4) .ms-pill {
+  background: #e1e8dc;
+  color: #4b6b32 !important;
+}
+
+.ms-card.done {
+  background: rgba(235, 245, 245, 0.86);
+  border-color: #7ab59c;
+}
+
+.ms-card.active {
+  background: rgba(236, 247, 224, 0.88);
+  border-color: #a9d556;
+}
+
+.ms-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #26430d !important;
+}
+
+.ms-pill {
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e2e8de;
+  color: #4b6b32 !important;
+}
+
+.ms-card strong {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #26430d !important;
+}
+
+.ms-status {
+  font-size: 11px;
+  font-weight: 700;
+  color: #3a7554 !important;
+}
+
+.ms-card p {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #4b6b32 !important;
+}
+
+/* Bottom Grid 2 Kolom */
+.detail-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 18px;
+  align-items: start;
+}
+
+/* Widget Catat Uang yang Ditabung (Transparan Glassmorphism + Warna Figma) */
+.record-saving-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding: 20px 22px;
+}
+
+.rsc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.rsc-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #8ec31e;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rsc-header h3 {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #26430d !important;
+}
+
+.rsc-header p {
+  font-size: 11.5px;
+  color: #3f7856 !important;
+}
+
+.rsc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #26430d !important;
+}
+
+.amount-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(235, 245, 243, 0.88);
+  border: 1.5px solid rgba(193, 219, 212, 0.9);
+  border-radius: 12px;
+  padding: 0 14px;
+  height: 44px;
+}
+
+.amount-input-wrap span {
+  font-weight: 800;
+  color: #2f6b47 !important;
+}
+
+.amount-input-wrap input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  font-weight: 800;
+  color: #26430d !important;
+}
+
+.preset-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+/* Tombol Cepat +10rb +20rb +50rb +100rb (Hijau Lime saat Aktif/Diklik) */
+.p-chip {
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(182, 214, 203, 0.9);
+  background: rgba(217, 237, 230, 0.9);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #2e6649 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.p-chip.active,
+.p-chip:hover {
+  background: #8ec31e !important;
+  border-color: #8ec31e !important;
+  color: #ffffff !important;
+}
+
+.detail-select {
+  height: 42px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(193, 219, 212, 0.9);
+  background: rgba(235, 245, 243, 0.88);
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #26430d !important;
+  outline: none;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.method-btn {
+  border: 1px solid rgba(208, 225, 198, 0.9);
+  background: rgba(244, 249, 244, 0.85);
+  border-radius: 11px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #4b6b32 !important;
+  cursor: pointer;
+}
+
+.method-btn span {
+  color: inherit !important;
+}
+
+.method-btn.active {
+  background: rgba(223, 239, 241, 0.95);
+  border: 1.5px solid #6ba68e;
+  color: #235943 !important;
+}
+
+.rsc-form textarea {
+  border: 1.5px solid rgba(193, 219, 212, 0.9);
+  background: rgba(235, 245, 243, 0.88);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  color: #26430d !important;
+  resize: vertical;
+  outline: none;
+}
+
+.rsc-form textarea::placeholder {
+  color: #7c9672 !important;
+}
+
+.btn-submit-detail {
+  height: 46px;
+  border: none;
+  border-radius: 12px;
+  background: #8ec31e;
+  color: #ffffff !important;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-submit-detail:hover {
+  background: #7fb315;
+}
+
+/* History Column */
+.history-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mini-stats-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mini-stat-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Warna Ikon Frekuensi Menabung & Rata-rata Setoran Sesuai Figma */
+.mini-stat-card:nth-child(1) .ms-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #e1ecef;
+  color: #4f7316 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mini-stat-card:nth-child(2) .ms-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #d8ede2;
+  color: #2a6343 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mini-stat-card small {
+  display: block;
+  font-size: 11px;
+  color: #4b6b32 !important;
+}
+
+.mini-stat-card strong {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #26430d !important;
+  margin: 2px 0;
+}
+
+.mini-stat-card:nth-child(2) strong {
+  color: #245b3c !important;
+}
+
+.mini-stat-card span {
+  font-size: 11px;
+  color: #3a7554 !important;
+  font-weight: 600;
+}
+
+/* Panel Riwayat Tabungan (Transparan + Kotak Widget Per Item) */
+.history-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding: 18px 20px;
+}
+
+.hp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.hp-header h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #26430d !important;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.hp-filters {
+  display: flex;
+  gap: 6px;
+}
+
+/* Tombol Filter Semua & Bulan Ini (Hijau Lime saat Aktif/Diklik) */
+.hp-tab {
+  border: 1px solid rgba(208, 225, 196, 0.9);
+  background: rgba(245, 249, 242, 0.85);
+  color: #26430d !important;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hp-tab.active,
+.hp-tab:hover {
+  background: #8ec31e !important;
+  border-color: #8ec31e !important;
+  color: #ffffff !important;
+}
+
+.tx-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Setiap Item Riwayat Diberi Kotak Widget Sendiri Agar Ada Batasnya */
+.tx-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1.5px solid rgba(203, 222, 191, 0.92);
+  border-radius: 14px;
+  padding: 12px 14px;
+  transition: background 0.2s ease;
+}
+
+.tx-item:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.tx-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.tx-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(226, 242, 214, 0.9);
+  color: #26430d !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tx-left strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #26430d !important;
+}
+
+.tx-meta {
+  display: block;
+  font-size: 11px;
+  color: #4b6b32 !important;
+  margin: 2px 0;
+}
+
+.tx-note {
+  display: block;
+  font-size: 11px;
+  font-style: italic;
+  color: #4b6b32 !important;
+}
+
+.tx-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.tx-badge {
+  display: inline-block;
+  background: rgba(226, 242, 214, 0.92);
+  color: #3f6e11 !important;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  margin-bottom: 3px;
+}
+
+.tx-amount {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #3f780c !important;
+}
+
+.tx-ref {
+  display: block;
+  font-size: 10px;
+  color: #4b6b32 !important;
+}
+
+.btn-show-more {
+  width: 100%;
+  margin-top: 14px;
+  padding-top: 12px;
+  border: none;
+  border-top: 1px solid rgba(208, 225, 196, 0.85);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4b6b32 !important;
+  cursor: pointer;
+}
+
+.btn-show-more:hover {
+  color: #26430d !important;
+}
+
+/* Responsif */
+@media (max-width: 1024px) {
+  .milestones-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .detail-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .hdc-stats-row, .mini-stats-pair {
+    grid-template-columns: 1fr;
+  }
+  .milestones-grid {
+    grid-template-columns: 1fr;
+  }
+}

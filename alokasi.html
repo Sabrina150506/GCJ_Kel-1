@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelola Alokasi Tabungan – Saving Goals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dashboard.css?v=12" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .main-wrapper {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-wrapper .content-area {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+      padding: 26px 28px 40px !important;
+    }
+
+    .topbar-right {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+
+    .user-chip {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      background: rgba(255, 255, 255, 0.72) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.85) !important;
+      padding: 6px 10px 6px 14px !important;
+      border-radius: 999px !important;
+    }
+
+    .user-text {
+      text-align: right !important;
+      line-height: 1.2 !important;
+    }
+
+    .user-text strong {
+      display: block !important;
+      font-size: 12.5px !important;
+      font-weight: 800 !important;
+    }
+
+    .user-text span {
+      font-size: 11px !important;
+      color: var(--text-muted) !important;
+    }
+
+    .avatar-badge {
+      width: 34px !important;
+      height: 34px !important;
+      border-radius: 50% !important;
+      background: var(--olive-dark) !important;
+      color: var(--white) !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .alloc-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      gap: 16px !important;
+      flex-wrap: wrap !important;
+      margin-bottom: 4px !important;
+    }
+
+    .alloc-eyebrow {
+      display: block !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      color: #4f7a12 !important;
+      letter-spacing: 0.03em !important;
+      margin-bottom: 6px !important;
+    }
+
+    .alloc-header h1 {
+      font-size: clamp(22px, 2.7vw, 27px) !important;
+      font-weight: 800 !important;
+      margin-bottom: 6px !important;
+    }
+
+    .alloc-header p {
+      font-size: 13px !important;
+      color: var(--text-muted) !important;
+      max-width: 680px !important;
+      line-height: 1.55 !important;
+      margin-top: 4px !important;
+    }
+
+    .alloc-header-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .btn-history-pill,
+    .btn-back-dash {
+      background: rgba(255, 255, 255, 0.72) !important;
+      backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.85) !important;
+      border-radius: 11px !important;
+      padding: 8px 13px !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      color: var(--text-dark) !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+
+    .btn-close-x {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 10px !important;
+      background: rgba(255, 255, 255, 0.72) !important;
+      backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.85) !important;
+      color: var(--text-dark) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+    }
+
+    /* Grid Utama 2 Kolom */
+    .alloc-main-grid {
+      display: grid !important;
+      grid-template-columns: 1.38fr 1fr !important;
+      gap: 24px !important;
+      align-items: start !important;
+    }
+
+    .alloc-left-col,
+    .alloc-right-col {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
+    }
+
+    /* Glassmorphism Semi-Transparan Kartu Utama */
+    .alloc-card {
+      background: rgba(255, 255, 255, 0.72) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.88) !important;
+      border-radius: 22px !important;
+      padding: 26px !important;
+      box-shadow: 0 10px 30px rgba(34, 54, 18, 0.04) !important;
+    }
+
+    .deposit-panel {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 22px !important;
+    }
+
+    .dp-head {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+    }
+
+    .dp-title {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+
+    .dp-icon {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 12px !important;
+      background: rgba(226, 243, 212, 0.9) !important;
+      color: var(--olive-dark) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .dp-title h2 {
+      font-size: 16.5px !important;
+      font-weight: 800 !important;
+      margin-bottom: 2px !important;
+    }
+
+    .dp-title p {
+      font-size: 12px !important;
+      color: var(--text-muted) !important;
+    }
+
+    .badge-instan {
+      background: rgba(226, 243, 212, 0.9) !important;
+      color: #3f6e11 !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      padding: 5px 11px !important;
+      border-radius: 999px !important;
+    }
+
+    /* Kotak Nominal (Putih Cerah Transparan Seragam dengan Formula Alokasi) */
+    .nominal-box {
+      background: rgba(255, 255, 255, 0.78) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 16px !important;
+      padding: 20px 22px !important;
+      box-shadow: 0 4px 14px rgba(34, 54, 18, 0.025) !important;
+    }
+
+    .nominal-box label {
+      display: block !important;
+      font-size: 10.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.03em !important;
+      color: var(--text-muted) !important;
+      margin-bottom: 10px !important;
+    }
+
+    .nominal-input-line {
+      display: flex !important;
+      align-items: baseline !important;
+      gap: 8px !important;
+      margin-bottom: 16px !important;
+    }
+
+    .nominal-input-line span {
+      font-size: 20px !important;
+      font-weight: 800 !important;
+      color: #2f6b18 !important;
+    }
+
+    .nominal-input-line input {
+      border: none !important;
+      background: transparent !important;
+      outline: none !important;
+      font-size: 34px !important;
+      font-weight: 800 !important;
+      color: var(--text-dark) !important;
+      width: 100% !important;
+    }
+
+    .chip-row {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+    }
+
+    .amt-chip {
+      background: #f5f9f2 !important;
+      border: 1px solid rgba(203, 221, 189, 0.95) !important;
+      border-radius: 999px !important;
+      padding: 7px 14px !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      color: var(--text-dark) !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .amt-chip:hover {
+      border-color: #8ec31e !important;
+      background: #ffffff !important;
+    }
+
+    .amt-chip.active {
+      background: #8ec31e !important;
+      color: #1d3608 !important;
+      border-color: #8ec31e !important;
+      font-weight: 800 !important;
+    }
+
+    /* Mode Distribusi 2x2 */
+    .sec-label {
+      display: block !important;
+      font-size: 12.5px !important;
+      font-weight: 700 !important;
+      margin-bottom: 10px !important;
+    }
+
+    .mode-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 12px !important;
+    }
+
+    .mode-card {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
+      background: rgba(255, 255, 255, 0.72) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 14px !important;
+      padding: 13px 14px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .mode-card input {
+      margin-top: 3px !important;
+      accent-color: var(--olive-dark) !important;
+    }
+
+    .mode-card strong {
+      display: block !important;
+      font-size: 12.5px !important;
+      font-weight: 800 !important;
+      margin-bottom: 3px !important;
+    }
+
+    .mode-card span {
+      font-size: 11px !important;
+      color: var(--text-muted) !important;
+    }
+
+    .mode-card.active {
+      background: rgba(226, 243, 212, 0.88) !important;
+      border-color: #8ec31e !important;
+    }
+
+    /* Sumber Dana 3 Kolom */
+    .source-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 12px !important;
+    }
+
+    .source-btn {
+      background: rgba(255, 255, 255, 0.72) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 14px !important;
+      padding: 14px 10px !important;
+      text-align: center !important;
+      cursor: pointer !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 5px !important;
+      color: var(--text-dark) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .source-btn strong {
+      font-size: 12px !important;
+      font-weight: 800 !important;
+    }
+
+    .source-btn span {
+      font-size: 10.5px !important;
+      color: var(--text-muted) !important;
+    }
+
+    .source-btn.active {
+      background: rgba(226, 243, 212, 0.88) !important;
+      border-color: #8ec31e !important;
+      color: var(--olive-dark) !important;
+    }
+
+    /* Catatan Refleksi (Putih Cerah Transparan Seragam) */
+    .note-label-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+
+    .note-label-row span {
+      font-size: 11px !important;
+      color: var(--text-muted) !important;
+    }
+
+    .note-input-wrap {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      background: rgba(255, 255, 255, 0.78) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 13px !important;
+      padding: 0 14px !important;
+      height: 46px !important;
+      color: var(--olive-dark) !important;
+    }
+
+    .note-input-wrap input {
+      border: none !important;
+      background: transparent !important;
+      outline: none !important;
+      width: 100% !important;
+      font-size: 12.5px !important;
+      color: var(--text-dark) !important;
+    }
+
+    .note-input-wrap input::placeholder {
+      color: #7c8c78 !important;
+    }
+
+    .dp-actions {
+      display: grid !important;
+      grid-template-columns: 1fr auto !important;
+      gap: 12px !important;
+      margin-top: 4px !important;
+    }
+
+    /* Tombol Konfirmasi Sesuai Warna Figma (Hijau Lime + Teks Hijau Gelap) */
+    .btn-confirm-alloc {
+      background: #8ec31e !important;
+      color: #1d3608 !important;
+      border: none !important;
+      border-radius: 13px !important;
+      height: 48px !important;
+      font-size: 13.5px !important;
+      font-weight: 800 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      box-shadow: 0 6px 16px rgba(142, 195, 30, 0.25) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .btn-confirm-alloc:hover {
+      background: #82b518 !important;
+      transform: translateY(-1px) !important;
+    }
+
+    .btn-cancel-alloc {
+      background: rgba(255, 255, 255, 0.75) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 13px !important;
+      padding: 0 22px !important;
+      height: 48px !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      color: #4f5e4b !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Widget Kuning Transparan: Financial Mindset Mahasiswa */
+    .mindset-banner {
+      background: rgba(242, 239, 193, 0.82) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(226, 220, 154, 0.95) !important;
+      border-radius: 18px !important;
+      padding: 18px 20px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+    }
+
+    .mindset-icon {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50% !important;
+      background: rgba(255, 255, 255, 0.92) !important;
+      color: #5a520c !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .mindset-content span {
+      display: block !important;
+      font-size: 10.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      color: #635c14 !important;
+      margin-bottom: 4px !important;
+      text-transform: uppercase !important;
+    }
+
+    .mindset-content p {
+      font-size: 12.5px !important;
+      line-height: 1.55 !important;
+      color: #3d3912 !important;
+      margin: 0 !important;
+    }
+
+    .mindset-content p strong {
+      color: #2f6b18 !important;
+      font-weight: 800 !important;
+    }
+
+    /* Kolom Kanan */
+    .fc-head, .pc-head {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 10px !important;
+      margin-bottom: 10px !important;
+    }
+
+    .fc-title {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .fc-title h2 {
+      font-size: 15.5px !important;
+      font-weight: 800 !important;
+    }
+
+    .btn-reset-formula {
+      background: transparent !important;
+      border: none !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      color: var(--text-muted) !important;
+      cursor: pointer !important;
+    }
+
+    .fc-desc {
+      font-size: 12px !important;
+      color: var(--text-muted) !important;
+      line-height: 1.5 !important;
+      margin-bottom: 14px !important;
+    }
+
+    .stacked-bar {
+      height: 10px !important;
+      border-radius: 999px !important;
+      overflow: hidden !important;
+      display: flex !important;
+      gap: 2px !important;
+      margin-bottom: 7px !important;
+      background: rgba(229, 238, 224, 0.85) !important;
+    }
+
+    .sb-meta {
+      display: flex !important;
+      justify-content: space-between !important;
+      font-size: 11px !important;
+      color: var(--text-muted) !important;
+      margin-bottom: 14px !important;
+    }
+
+    .sb-meta strong {
+      color: #3f6e11 !important;
+    }
+
+    .formula-list {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .formula-item {
+      background: rgba(255, 255, 255, 0.78) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 13px !important;
+      padding: 11px 13px !important;
+    }
+
+    .fi-top, .fi-sub {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+
+    .fi-top {
+      font-size: 12px !important;
+      margin-bottom: 4px !important;
+    }
+
+    .fi-top span {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-weight: 700 !important;
+    }
+
+    .dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      display: inline-block !important;
+    }
+
+    .fi-sub {
+      font-size: 11px !important;
+      color: var(--text-muted) !important;
+    }
+
+    .fi-sub strong {
+      color: #3f6e11 !important;
+    }
+
+    .qris-roundup-box {
+      background: rgba(255, 255, 255, 0.78) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 13px !important;
+      padding: 11px 13px !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+
+    .qr-left {
+      display: flex !important;
+      align-items: center !important;
+      gap: 9px !important;
+    }
+
+    .qr-left strong {
+      display: block !important;
+      font-size: 12px !important;
+    }
+
+    .qr-left span {
+      font-size: 11px !important;
+      color: var(--text-muted) !important;
+    }
+
+    /* Switch Toggle */
+    .switch {
+      position: relative !important;
+      display: inline-block !important;
+      width: 40px !important;
+      height: 22px !important;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #cbd5c5;
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+
+    .slider::before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.25s;
+    }
+
+    .switch input:checked + .slider {
+      background-color: var(--olive-dark);
+    }
+
+    .switch input:checked + .slider::before {
+      transform: translateX(18px);
+    }
+
+    /* Proyeksi Percepatan (Kotak Dalam Putih Cerah Transparan Seragam dengan Formula Alokasi) */
+    .rate-pill {
+      background: rgba(226, 243, 212, 0.95) !important;
+      border: 1px solid rgba(196, 224, 174, 0.9) !important;
+      color: #2f6b18 !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+    }
+
+    .speed-highlight {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin: 10px 0 14px !important;
+    }
+
+    .speed-highlight span {
+      font-size: 10.5px !important;
+      font-weight: 800 !important;
+      color: var(--text-muted) !important;
+      text-transform: uppercase !important;
+      line-height: 1.35 !important;
+    }
+
+    .speed-highlight strong {
+      font-size: 19px !important;
+      font-weight: 800 !important;
+      color: #2f6b18 !important;
+      text-align: right !important;
+      line-height: 1.2 !important;
+    }
+
+    .speed-chart-box {
+      background: rgba(255, 255, 255, 0.78) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 16px !important;
+      padding: 16px 16px 14px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .speed-svg {
+      width: 100% !important;
+      height: 88px !important;
+      display: block !important;
+      overflow: visible !important;
+    }
+
+    .chart-legend-mini {
+      display: grid !important;
+      grid-template-columns: 1fr 1.25fr !important;
+      align-items: start !important;
+      font-size: 11px !important;
+      margin-top: 10px !important;
+      padding-top: 10px !important;
+      border-top: 1px solid rgba(208, 225, 196, 0.75) !important;
+      gap: 10px !important;
+      line-height: 1.35 !important;
+    }
+
+    .legend-col-left {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 6px !important;
+      color: #526352 !important;
+      font-weight: 600 !important;
+    }
+
+    .legend-col-right {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 6px !important;
+      color: #2d7a47 !important;
+      font-weight: 700 !important;
+    }
+
+    .line-dashed, .line-solid {
+      display: inline-block;
+      width: 10px;
+      height: 2px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .line-dashed { border-top: 2px dashed #9eb09e; }
+    .line-solid { background: #2d6a32; }
+
+    .pc-mini-stats {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 12px !important;
+    }
+
+    .pms-box {
+      background: rgba(255, 255, 255, 0.78) !important;
+      border: 1.5px solid rgba(208, 225, 196, 0.9) !important;
+      border-radius: 16px !important;
+      padding: 14px 15px !important;
+    }
+
+    .pms-box span {
+      display: block !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      color: #526352 !important;
+      margin-bottom: 5px !important;
+      line-height: 1.35 !important;
+    }
+
+    .pms-box strong {
+      display: block !important;
+      font-size: 15.5px !important;
+      font-weight: 800 !important;
+      color: #162415 !important;
+      margin-bottom: 4px !important;
+    }
+
+    .pms-box small {
+      display: block !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      color: #2d7a47 !important;
+      line-height: 1.35 !important;
+    }
+
+    .empty-goal-notice {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1.5px dashed #c8d9be;
+      border-radius: 14px;
+      padding: 18px 16px;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .empty-goal-notice a {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--lime);
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1024px) {
+      .alloc-main-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .mode-grid, .source-grid, .pc-mini-stats {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar Kiri -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="sidebar-brand">
+          <div class="brand-info">
+            <span class="brand-name">Saving Goals</span>
+            <span class="brand-role">Platform Mahasiswa</span>
+          </div>
+          <button type="button" class="close-sidebar-btn" id="closeSidebarBtn" aria-label="Tutup menu">
+            <i data-lucide="x" width="18" height="18"></i>
+          </button>
+        </div>
+
+        <div class="profile-box">
+          <div class="profile-avatar-icon">
+            <i data-lucide="graduation-cap" width="18" height="18"></i>
+          </div>
+          <div class="profile-meta">
+            <strong id="sidebarUserName">Mahasiswa</strong>
+            <span id="sidebarUserRole">Ilmu Komputer UB</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item active">
+            <i data-lucide="layout-grid" width="17" height="17"></i> Dashboard
+          </a>
+          <a href="goals.html" class="nav-item">
+            <i data-lucide="target" width="17" height="17"></i> Saving Goals
+          </a>
+          <a href="goal-detail.html" class="nav-item">
+            <i data-lucide="circle-dot" width="17" height="17"></i> Detail Target
+          </a>
+          <a href="report.html" class="nav-item">
+            <i data-lucide="trending-up" width="17" height="17"></i> Saving Report
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-settings-card">
+          <div class="ssc-target-row">
+            <span>Target Tercapai</span>
+            <strong id="sidebarTargetRatio">0 / 0</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="sidebarTargetBar" style="width: 0%;"></div>
+          </div>
+          <a href="settings.html" class="sidebar-settings-link">
+            <i data-lucide="settings" width="16" height="16"></i> Settings / Pengaturan
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Konten Utama -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <i data-lucide="menu" width="20" height="20"></i>
+          </button>
+          <span class="semester-pill"><span class="dot"></span> 2026 • Smart Allocation</span>
+        </div>
+        <div class="topbar-right">
+          <a href="dashboard.html" class="btn-back-dash">
+            <i data-lucide="arrow-left" width="15" height="15"></i> Kembali ke Dashboard
+          </a>
+          <div class="user-chip">
+            <div class="user-text">
+              <strong id="topUserName">User</strong>
+              <span id="topUserMajor">Ilmu Komputer</span>
+            </div>
+            <div class="avatar-badge" id="topAvatarInitials">SG</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <!-- Header Halaman -->
+        <section class="alloc-header">
+          <div>
+            <span class="alloc-eyebrow">SMART ALLOCATION SYSTEM • MAHASISWA FIN-FLOW</span>
+            <h1>Kelola Alokasi Tabungan & Setoran Kilat</h1>
+            <p>Distribusikan sisa uang saku dan hasil penghematan harian langsung ke target impian secara proporsional atau instan.</p>
+          </div>
+          <div class="alloc-header-actions">
+            <a href="report.html" class="btn-history-pill">
+              <i data-lucide="history" width="15" height="15"></i> Riwayat Setor
+            </a>
+            <a href="dashboard.html" class="btn-close-x" title="Tutup">
+              <i data-lucide="x" width="16" height="16"></i>
+            </a>
+          </div>
+        </section>
+
+        <!-- Grid Utama 2 Kolom -->
+        <section class="alloc-main-grid">
+          <!-- Kolom Kiri: Form Deposit Kilat + Financial Mindset -->
+          <div class="alloc-left-col">
+            <form class="alloc-card deposit-panel" id="allocDepositForm">
+              <div class="dp-head">
+                <div class="dp-title">
+                  <span class="dp-icon"><i data-lucide="zap" width="17" height="17"></i></span>
+                  <div>
+                    <h2>Deposit Kilat (Tabung Sekarang)</h2>
+                    <p>Langsung cairkan sisa budget ke target prioritas</p>
+                  </div>
+                </div>
+                <span class="badge-instan">Instan</span>
+              </div>
+
+              <div class="nominal-box">
+                <label for="allocAmount">NOMINAL YANG INGIN DISIMPAN</label>
+                <div class="nominal-input-line">
+                  <span>Rp</span>
+                  <input type="text" id="allocAmount" value="50.000" />
+                </div>
+                <div class="chip-row">
+                  <button type="button" class="amt-chip" data-val="10000">+10k</button>
+                  <button type="button" class="amt-chip" data-val="20000">+20k</button>
+                  <button type="button" class="amt-chip active" data-val="50000">+50k</button>
+                  <button type="button" class="amt-chip" data-val="100000">+100k</button>
+                  <button type="button" class="amt-chip" data-val="150000">+150k</button>
+                  <button type="button" class="amt-chip" data-val="200000">+200k</button>
+                </div>
+              </div>
+
+              <!-- Distribusi Target Tabungan (Dinamis dari Supabase) -->
+              <div class="form-section">
+                <label class="sec-label">Distribusi Target Tabungan</label>
+                <div id="modeGridContainer">
+                  <div class="empty-goal-notice">Memuat daftar target tabunganmu...</div>
+                </div>
+              </div>
+
+              <!-- Sumber Dana -->
+              <div class="form-section">
+                <label class="sec-label">Sumber Dana</label>
+                <div class="source-grid">
+                  <button type="button" class="source-btn active" data-source="Gaji & Tabungan">
+                    <i data-lucide="wallet" width="17" height="17"></i>
+                    <strong>Gaji & Tabungan</strong>
+                    <span>Alokasi bulanan</span>
+                  </button>
+                  <button type="button" class="source-btn" data-source="E-Wallet Kampus">
+                    <i data-lucide="smartphone" width="17" height="17"></i>
+                    <strong>E-Wallet Kampus</strong>
+                    <span>Saldo GoPay/OVO</span>
+                  </button>
+                  <button type="button" class="source-btn" data-source="Bank Mahasiswa">
+                    <i data-lucide="landmark" width="17" height="17"></i>
+                    <strong>Bank Mahasiswa</strong>
+                    <span>BCA / Mandiri</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Catatan Refleksi (Placeholder Opsional, Tidak Terkunci Default) -->
+              <div class="form-section">
+                <div class="note-label-row">
+                  <label class="sec-label" for="reflectionNote">Catatan Refleksi / Kemenangan Kecil</label>
+                  <span>Opsional</span>
+                </div>
+                <div class="note-input-wrap">
+                  <i data-lucide="lightbulb" width="15" height="15"></i>
+                  <input type="text" id="reflectionNote" placeholder="Contoh: Hemat jajan siang atau sisa uang makan hari ini" />
+                </div>
+              </div>
+
+              <div class="dp-actions">
+                <button type="submit" class="btn-confirm-alloc" id="btnSubmitAlloc">
+                  <i data-lucide="check-circle-2" width="17" height="17"></i> Konfirmasi Alokasi & Setor
+                </button>
+                <a href="dashboard.html" class="btn-cancel-alloc">Batal</a>
+              </div>
+            </form>
+
+            <!-- Widget Kuning Transparan: Financial Mindset Mahasiswa -->
+            <div class="mindset-banner">
+              <div class="mindset-icon">
+                <i data-lucide="brain" width="19" height="19"></i>
+              </div>
+              <div class="mindset-content">
+                <span>FINANCIAL MINDSET MAHASISWA</span>
+                <p>Menyetor <strong>Rp 10.000 – Rp 20.000</strong> secara konsisten dari sisa uang makan harian terbukti 3× lebih berhasil dibanding menabung nominal besar sekali di akhir bulan.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Formula Alokasi & Proyeksi Percepatan -->
+          <div class="alloc-right-col">
+            <!-- Kartu Formula Alokasi Otomatis (Dinamis dari Supabase) -->
+            <div class="alloc-card formula-card">
+              <div class="fc-head">
+                <div class="fc-title">
+                  <i data-lucide="sliders-horizontal" width="17" height="17"></i>
+                  <h2>Formula Alokasi Otomatis</h2>
+                </div>
+                <button type="button" class="btn-reset-formula" id="resetFormulaBtn">Reset Default</button>
+              </div>
+              <p class="fc-desc">Setiap ada dana masuk (kiriman orang tua, honor asdos, atau deposit kilat), sistem membaginya sesuai porsi berikut:</p>
+
+              <div class="stacked-bar" id="formulaStackedBar"></div>
+              <div class="sb-meta">
+                <span>0%</span>
+                <strong id="formulaTotalPct">Total Terdistribusi: 0%</strong>
+              </div>
+
+              <div class="formula-list" id="formulaListContainer">
+                <div class="empty-goal-notice">Belum ada target tabungan untuk dialokasikan.</div>
+              </div>
+
+              <div class="qris-roundup-box">
+                <div class="qr-left">
+                  <i data-lucide="qr-code" width="18" height="18"></i>
+                  <div>
+                    <strong>Auto-Roundup QRIS</strong>
+                    <span>Bulatkan belanja ke ribuan terdekat</span>
+                  </div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="qrisToggle" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Kartu Proyeksi Percepatan -->
+            <div class="alloc-card projection-card">
+              <div class="pc-head">
+                <div class="fc-title">
+                  <i data-lucide="trending-up" width="17" height="17"></i>
+                  <h2>Proyeksi Percepatan</h2>
+                </div>
+                <span class="rate-pill" id="projDailyRate">+Rp 0/hari</span>
+              </div>
+
+              <div class="speed-highlight">
+                <span id="projGoalLabel">ESTIMASI TARGET TERCAPAI</span>
+                <strong id="projFasterDays">-</strong>
+              </div>
+
+              <div class="speed-chart-box">
+                <svg viewBox="0 0 280 88" class="speed-svg">
+                  <defs>
+                    <linearGradient id="boostAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#94bd23" stop-opacity="0.28" />
+                      <stop offset="100%" stop-color="#94bd23" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Area Gradasi di bawah garis percepatan -->
+                  <path d="M 12 64 Q 135 40 256 12 L 256 76 L 12 76 Z" fill="url(#boostAreaGrad)" />
+                  <!-- Garis Putus-putus Normal -->
+                  <path d="M 12 64 L 256 38" fill="none" stroke="#a6b5a0" stroke-width="2" stroke-dasharray="4 4" />
+                  <!-- Garis Hijau Tua Percepatan -->
+                  <path d="M 12 64 Q 135 40 256 12" fill="none" stroke="#2d6a32" stroke-width="2.8" stroke-linecap="round" />
+                  <!-- Titik Hijau Lime di Ujung -->
+                  <circle cx="256" cy="12" r="4.5" fill="#94bd23" stroke="#ffffff" stroke-width="1.5" />
+                  <!-- Label Bulan Estimasi di Bawah Garis (Tidak Bertumpuk) -->
+                  <text id="projSvgMonthLabel" x="256" y="74" text-anchor="end" font-size="9.5" font-weight="700" fill="#2d7a47">-</text>
+                </svg>
+
+                <div class="chart-legend-mini">
+                  <div class="legend-col-left">
+                    <i class="line-dashed"></i>
+                    <span id="projNormalDate">Normal</span>
+                  </div>
+                  <div class="legend-col-right">
+                    <i class="line-solid"></i>
+                    <span id="projBoostDate">Ditambah Setor Kilat</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pc-mini-stats">
+                <div class="pms-box">
+                  <span>Tambahan Saldo / Bulan</span>
+                  <strong id="projMonthlyAdd">+Rp 0</strong>
+                  <small>Jika konsisten menabung rutin</small>
+                </div>
+                <div class="pms-box">
+                  <span>Total Terkumpul Saat Ini</span>
+                  <strong id="projCurrentTotal">Rp 0</strong>
+                  <small>Dari seluruh target aktif</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/alokasi.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saving Goals – Smart Campus Micro-Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+            <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Saving Goals</span>
+          <span class="brand-subtitle">SMART CAMPUS MICRO-FINANCE</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Split Card -->
+    <main class="auth-card">
+      <!-- Left Column (Promo & Value Prop) -->
+      <section class="promo-side">
+        <div class="badge-chip">
+          <i data-lucide="zap" width="14" height="14"></i> Micro-Budgeting Gen-Z
+        </div>
+
+        <h1 class="hero-title">
+          Small Steps,<br />
+          <span class="highlight">Big Habits.</span>
+        </h1>
+
+        <p class="hero-desc">
+          Empowering everyday student financial wellbeing. Atur jajan kos, tagihan skripsi, dan tabungan liburan semester tanpa rasa cemas.
+        </p>
+
+        <div class="hero-image-box">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+            alt="Mahasiswa menabung bersama"
+          />
+          <div class="image-overlay"></div>
+          <div class="saving-stat">
+            <div class="stat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+                <circle cx="12" cy="12" r="2" />
+                <path d="M6 12h.01M18 12h.01" />
+              </svg>
+            </div>
+            <div>
+              <span class="stat-label">RATA-RATA HEMAT</span>
+              <div class="stat-value"><strong>Rp420.000</strong> <span>/bulan</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-pills">
+          <div class="pill-item">
+            <span class="pill-icon"><i data-lucide="flag" width="14" height="14"></i></span> Target Tabungan Fleksibel
+          </div>
+          <div class="pill-item">
+            <span class="pill-icon"><i data-lucide="sparkles" width="14" height="14"></i></span> Gamifikasi Penghematan
+          </div>
+        </div>
+
+        <p class="social-proof">Digunakan 18.400+ mahasiswa aktif</p>
+      </section>
+
+      <!-- Right Column (Form Login / Register) -->
+      <section class="form-side">
+        <div class="form-header">
+          <div>
+            <h2 id="formTitle">Selamat Datang Kembali</h2>
+            <p id="formSubtitle">Lanjutkan kebiasaan finansial cerdas kampusmu.</p>
+          </div>
+          <div class="decor-icon" title="Smart Campus">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tab Switcher -->
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="tab-btn active" id="tabLogin" data-mode="login">
+            <i data-lucide="log-in" width="15" height="15"></i> Masuk (Login)
+          </button>
+          <button type="button" class="tab-btn" id="tabRegister" data-mode="register">
+            <i data-lucide="user-plus" width="15" height="15"></i> Daftar Akun Baru
+          </button>
+        </div>
+
+        <!-- Google Login Button -->
+        <button type="button" class="btn-google" id="btnGoogle">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24z" />
+            <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14z" />
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96z" />
+          </svg>
+          Lanjutkan dengan Akun Google
+        </button>
+
+        <div class="divider">
+          <span>ATAU DENGAN EMAIL</span>
+        </div>
+
+        <!-- Form -->
+        <form id="authForm">
+          <!-- Field Nama (Muncul saat mode Daftar Akun Baru) -->
+          <div class="form-group hidden" id="nameGroup">
+            <div class="label-row">
+              <label for="fullName">Nama Lengkap</label>
+              <span class="hint">cth: Angle Halder</span>
+            </div>
+            <div class="input-wrapper">
+              <span class="input-icon"><i data-lucide="user" width="16" height="16"></i></span>
+              <input type="text" id="fullName" placeholder="Masukkan nama lengkapmu" />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="email">Alamat Email</label>
+              <span class="hint">cth: nama@gmail.com</span>
+            </div>
+            <div class="input-wrapper">
+              <span class="input-icon"><i data-lucide="mail" width="16" height="16"></i></span>
+              <input type="email" id="email" placeholder="alamat@gmail.com" required />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="password">Kata Sandi</label>
+              <a href="#" class="forgot-link" id="forgotLink">Lupa Password?</a>
+            </div>
+            <div class="input-wrapper">
+              <span class="input-icon"><i data-lucide="lock" width="16" height="16"></i></span>
+              <input type="password" id="password" placeholder="Masukkan kata sandi akunmu" required />
+              <button type="button" class="toggle-password" id="togglePassword" aria-label="Tampilkan sandi">
+                <i data-lucide="eye" width="16" height="16"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Remember Me -->
+          <div class="remember-row" id="rememberRow">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" />
+              <span>Ingat sesi saya di perangkat ini (30 Hari)</span>
+            </label>
+          </div>
+
+          <p class="error-msg" id="errorMsg"></p>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            Masuk ke Dompet <i data-lucide="arrow-right" width="16" height="16"></i>
+          </button>
+        </form>
+
+        <p class="help-text">
+          Punya kendala? <a href="#" id="helpCenterLink">Pusat Bantuan</a>
+        </p>
+      </section>
+    </main>
+
+    <!-- Bottom 3 Feature Cards -->
+    <section class="bottom-cards">
+      <div class="info-card">
+        <div class="info-icon"><i data-lucide="shield-check" width="20" height="20"></i></div>
+        <div class="info-content">
+          <h3>Data Aman & Terisolasi</h3>
+          <p>Tanpa pihak ketiga. Catatan pengeluaran tersimpan aman di server terenkripsi khusus kampus.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i data-lucide="trending-up" width="20" height="20"></i></div>
+        <div class="info-content">
+          <h3>Algoritma Micro-Saving</h3>
+          <p>Otomatis membulatkan sisa jajan kopi kantin untuk ditabung ke rekening darurat impian.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i data-lucide="award" width="20" height="20"></i></div>
+        <div class="info-content">
+          <h3>Reward</h3>
+          <p>Raih streak hemat mingguan untuk klaim voucher fotokopi dan promo makan siang mitra kampus.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal Pusat Bantuan -->
+  <div id="helpCenterModal" style="display:none; position:fixed; inset:0; background:rgba(20,32,12,0.45); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; padding:16px;">
+    <div style="background:#ffffff; border-radius:20px; width:100%; max-width:440px; padding:24px; color:#26430d; box-shadow:0 24px 60px rgba(0,0,0,0.18); font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:9px;">
+          <div style="width:36px; height:36px; border-radius:10px; background:#eef6e7; color:#3f6e11; display:flex; align-items:center; justify-content:center;">
+            <i data-lucide="life-buoy" width="19" height="19"></i>
+          </div>
+          <div>
+            <h3 style="font-size:17px; font-weight:800; margin:0;">Pusat Bantuan</h3>
+            <span style="font-size:11.5px; color:#4b6b32;">Saving Goals Campus Support</span>
+          </div>
+        </div>
+        <button type="button" id="closeHelpModal" style="width:32px; height:32px; border-radius:9px; border:1px solid #d4e3c8; background:#f8fbf6; color:#26430d; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+          <i data-lucide="x" width="16" height="16"></i>
+        </button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:12.5px; line-height:1.55; color:#3a571f;">
+        <div style="background:#f6faf2; border:1px solid #d8e7cb; border-radius:12px; padding:12px;">
+          <strong style="display:block; color:#26430d; margin-bottom:2px;">1. Belum punya akun?</strong>
+          Klik tab <b>Daftar Akun Baru</b> atau gunakan tombol <b>Lanjutkan dengan Akun Google</b> untuk masuk otomatis.
+        </div>
+        <div style="background:#f6faf2; border:1px solid #d8e7cb; border-radius:12px; padding:12px;">
+          <strong style="display:block; color:#26430d; margin-bottom:2px;">2. Lupa Kata Sandi?</strong>
+          Isi alamat emailmu di kolom email lalu klik <b>Lupa Password?</b> untuk mengirim tautan pengaturan ulang sandi.
+        </div>
+        <div style="background:#f6faf2; border:1px solid #d8e7cb; border-radius:12px; padding:12px;">
+          <strong style="display:block; color:#26430d; margin-bottom:2px;">3. Bantuan Teknis & Akun Kampus</strong>
+          Hubungi tim dukungan kami melalui email <b>support@savinggoals.id</b> jika mengalami kendala akses.
+        </div>
+      </div>
+
+      <button type="button" id="okHelpModal" style="margin-top:16px; width:100%; height:42px; border-radius:12px; border:none; background:#8ec31e; color:#ffffff; font-family:inherit; font-size:13px; font-weight:800; cursor:pointer;">
+        Mengerti
+      </button>
+    </div>
+  </div>
+
+  <!-- Supabase & Auth Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+
+      const helpModal = document.getElementById('helpCenterModal');
+      const helpLink = document.getElementById('helpCenterLink');
+      const closeHelp = document.getElementById('closeHelpModal');
+      const okHelp = document.getElementById('okHelpModal');
+
+      if (helpLink && helpModal) {
+        helpLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          helpModal.style.display = 'flex';
+          if (window.lucide) lucide.createIcons();
+        });
+      }
+
+      const hideHelpModal = () => {
+        if (helpModal) helpModal.style.display = 'none';
+      };
+
+      if (closeHelp) closeHelp.addEventListener('click', hideHelpModal);
+      if (okHelp) okHelp.addEventListener('click', hideHelpModal);
+      if (helpModal) {
+        helpModal.addEventListener('click', (e) => {
+          if (e.target === helpModal) hideHelpModal();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
