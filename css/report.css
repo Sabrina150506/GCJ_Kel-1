@@ -1,0 +1,974 @@
+/* Header Laporan */
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.rh-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.rh-tags .badge-cream {
+  display: inline-flex;
+  align-items: center;
+  background: var(--cream-soft);
+  border: 1px solid rgba(218, 198, 122, 0.72);
+  color: #5c5712;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 999px;
+}
+
+.rh-left h1 {
+  font-size: clamp(22px, 2.7vw, 27px);
+  font-weight: 800;
+  color: #26430d;
+  margin-bottom: 4px;
+}
+
+.rh-left p {
+  font-size: 13px;
+  color: #4b6b32;
+}
+
+.rh-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.period-select-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 12px;
+  padding: 0 13px;
+  height: 42px;
+  color: #26430d;
+}
+
+.period-select-wrap select {
+  border: none;
+  background: transparent;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #26430d;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-download-pdf {
+  background: var(--olive-dark);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  height: 42px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: opacity 0.2s;
+}
+
+.btn-download-pdf:hover {
+  opacity: 0.92;
+}
+
+/* 4 Kartu KPI */
+.report-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.rk-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rk-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b6b32;
+}
+
+.rk-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--mint-soft);
+  border: 1px solid rgba(154, 194, 134, 0.78);
+  color: #2f5b12;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rk-val {
+  font-size: clamp(20px, 2.1vw, 23px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #26430d;
+}
+
+.rk-val small {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: #26430d;
+}
+
+.rk-inline-val {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.rk-inline-val strong {
+  font-size: clamp(23px, 2.3vw, 26px);
+  font-weight: 800;
+  color: #26430d;
+}
+
+.rk-inline-val span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #467810 !important;
+}
+
+.rk-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #4b6b32;
+  flex-wrap: wrap;
+}
+
+.rk-pill-green {
+  background: var(--mint-soft);
+  border: 1px solid rgba(154, 194, 134, 0.72);
+  color: #3f6e11 !important;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.rk-pill-cream {
+  background: var(--cream-soft);
+  border: 1px solid rgba(218, 198, 122, 0.72);
+  color: #6b6310 !important;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.rk-sub {
+  font-size: 11px;
+  color: #4b6b32;
+}
+
+/* Grafik & Profil Kanan (Mentok Rata Sejajar) */
+.report-chart-grid {
+  display: grid;
+  grid-template-columns: 1.75fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.chart-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cp-header h3 {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #26430d;
+  margin-bottom: 3px;
+}
+
+.cp-header p {
+  font-size: 11.5px;
+  color: #4b6b32;
+}
+
+.cp-legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4b6b32;
+}
+
+.cp-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dot-olive, .dot-lime {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dot-olive { background: var(--olive-dark); }
+.dot-lime { background: var(--lime); }
+
+.chart-canvas-box {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.consistency-banner {
+  background: rgba(239, 247, 232, 0.82);
+  border: 1px solid rgba(184, 214, 165, 0.85);
+  border-radius: 14px;
+  padding: 13px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cb-left {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.cb-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--lime);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cb-left strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #26430d;
+}
+
+.cb-left p {
+  font-size: 11.5px;
+  color: #4b6b32;
+}
+
+.cb-badge {
+  background: rgba(255, 255, 255, 0.88);
+  color: #3f6e11;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid #cce3b9;
+}
+
+/* Mindful Side Card (Mentok Rata Sejajar Dengan Grafik Kiri) */
+.mindful-side-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.msc-profile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.msc-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--olive-dark);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.msc-profile strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #26430d;
+}
+
+.msc-profile span {
+  font-size: 11.5px;
+  color: #4b6b32;
+}
+
+.msc-banner-img {
+  width: 100%;
+  height: 158px;
+  border-radius: 13px;
+  overflow: hidden;
+  border: 1px solid rgba(190, 214, 174, 0.8);
+}
+
+.msc-banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+.msc-quote-box {
+  background: rgba(246, 250, 242, 0.78);
+  border: 1px solid rgba(190, 214, 174, 0.8);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.msc-eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #4f7a12 !important;
+  margin-bottom: 4px;
+}
+
+.msc-quote-box blockquote {
+  font-size: 11.5px;
+  line-height: 1.48;
+  color: #26430d;
+  font-style: italic;
+}
+
+.msc-donut-section h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #26430d;
+  margin-bottom: 8px;
+}
+
+.msc-donut-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mini-donut {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: conic-gradient(#4f6b18 0% 55%, #94bd23 55% 85%, #d6ec9e 85% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mini-donut-hole {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #26430d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-donut-legends {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #4b6b32;
+  font-weight: 600;
+}
+
+.mini-donut-legends span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lg-dot.c1 { background: #4f6b18; }
+.lg-dot.c2 { background: #94bd23; }
+.lg-dot.c3 { background: #cbe58e; }
+.lg-dot.c4 { background: #6fb088; }
+
+/* Ringkasan Pencapaian 4 Kartu */
+.achievements-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ach-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ach-header h2 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #26430d;
+  margin-bottom: 3px;
+}
+
+.ach-header p {
+  font-size: 12px;
+  color: #4b6b32;
+}
+
+.ach-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ach-badges .badge-mint,
+.ssp-header .badge-mint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(234, 244, 226, 0.85);
+  border: 1px solid #cce3b9;
+  color: #3f6e11;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.ach-badges .badge-cream {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 242, 214, 0.88);
+  border: 1px solid #e4dfa8;
+  color: #6b6310;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.ssp-header .badge-mint {
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.ach-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.ach-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ach-card.completed-highlight {
+  background: linear-gradient(155deg, rgba(43, 74, 23, 0.92) 0%, rgba(61, 99, 34, 0.92) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff !important;
+  border: 1px solid rgba(164, 204, 128, 0.35);
+}
+
+.ach-card.completed-highlight * {
+  color: #ffffff !important;
+}
+
+.ach-card.completed-highlight .ach-title span,
+.ach-card.completed-highlight .ach-amounts span,
+.ach-card.completed-highlight .ach-footer span {
+  color: #dff0d4 !important;
+}
+
+.ach-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ach-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--mint-soft);
+  border: 1px solid rgba(154, 194, 134, 0.78);
+  color: #2f5b12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ach-card.completed-highlight .ach-icon {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff !important;
+}
+
+.ach-status-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: var(--mint-soft);
+  border: 1px solid rgba(154, 194, 134, 0.72);
+  color: #3f6e11 !important;
+  line-height: 1.25;
+}
+
+.ach-status-pill.warm {
+  background: var(--cream-soft);
+  border: 1px solid rgba(218, 198, 122, 0.72);
+  color: #6b6310 !important;
+}
+
+.ach-card.completed-highlight .ach-status-pill {
+  background: var(--lime);
+  border: none;
+  color: #ffffff !important;
+}
+
+.ach-title strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.ach-title span {
+  font-size: 11px;
+  color: #4b6b32;
+}
+
+.ach-amounts {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.ach-amounts strong {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.ach-amounts strong small {
+  display: block;
+  font-size: 12px;
+}
+
+.ach-amounts span {
+  font-size: 10.5px;
+  color: #4b6b32;
+  text-align: right;
+}
+
+.ach-prog-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.ach-card.completed-highlight .progress-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ach-card.completed-highlight .progress-fill {
+  background: #b7e33b !important;
+}
+
+.ach-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #4b6b32;
+  padding-top: 6px;
+  border-top: 1px solid rgba(190, 214, 174, 0.55);
+}
+
+.ach-card.completed-highlight .ach-footer {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Bottom 2 Kolom */
+.report-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.alloc-panel, .stats-summary-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.ap-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ap-eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #4f7a12 !important;
+  margin-bottom: 3px;
+}
+
+.ap-top h3 {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #26430d;
+}
+
+.ap-total-pill {
+  background: var(--cream-soft);
+  border: 1px solid rgba(218, 198, 122, 0.72);
+  color: #5e570d !important;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.ap-desc, .ssp-desc {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #4b6b32;
+}
+
+.alloc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-expand-alloc {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(190, 214, 174, 0.65);
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #3f6e11;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-expand-alloc:hover {
+  opacity: 0.8;
+}
+
+.alloc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(246, 250, 242, 0.75);
+  border: 1px solid rgba(190, 214, 174, 0.75);
+}
+
+.ai-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--mint-soft);
+  border: 1px solid rgba(154, 194, 134, 0.78);
+  color: #2f5b12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-left strong {
+  display: block;
+  font-size: 13px;
+  color: #26430d;
+}
+
+.ai-left span {
+  font-size: 11px;
+  color: #4b6b32;
+}
+
+.ai-right {
+  text-align: right;
+}
+
+.ai-right strong {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #3f780c !important;
+}
+
+.ai-right span {
+  font-size: 10.5px;
+  color: #4b6b32;
+}
+
+/* Ringkasan Statistik Tabungan */
+.ssp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.ssp-header h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #26430d;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ssp-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ssp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  background: rgba(246, 250, 242, 0.75);
+  border: 1px solid rgba(190, 214, 174, 0.75);
+}
+
+.ssp-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ssp-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--mint-soft);
+  border: 1px solid rgba(154, 194, 134, 0.78);
+  color: #2f5b12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ssp-left strong {
+  display: block;
+  font-size: 12.5px;
+  color: #26430d;
+}
+
+.ssp-left span {
+  font-size: 11px;
+  color: #4b6b32;
+}
+
+.ssp-val {
+  font-size: 13.5px;
+  font-weight: 800;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ssp-val.green {
+  color: #3f780c !important;
+  text-align: right;
+}
+
+.ssp-right-stack {
+  text-align: right;
+}
+
+.ssp-right-stack strong {
+  display: block;
+  font-size: 12.5px;
+  color: #3f780c !important;
+}
+
+.ssp-right-stack span {
+  font-size: 11px;
+  color: #4b6b32;
+}
+
+.ssp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: #4b6b32;
+  padding-top: 8px;
+  margin-top: auto;
+  border-top: 1px solid rgba(190, 214, 174, 0.55);
+}
+
+.verified-text {
+  color: #3f780c !important;
+  font-weight: 700;
+}
+
+/* Mode Print PDF */
+@media print {
+  .sidebar, .topbar, .rh-actions, .toast {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  .dashboard-content {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Responsif */
+@media (max-width: 1120px) {
+  .report-kpi-grid, .ach-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .report-chart-grid, .report-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .report-kpi-grid, .ach-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

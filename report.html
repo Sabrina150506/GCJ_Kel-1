@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saving Report – Saving Goals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dashboard.css?v=5" />
+  <link rel="stylesheet" href="css/report.css?v=6" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar Kiri -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-info">
+            <span class="brand-name">Saving Goals</span>
+            <span class="brand-role">Platform Mahasiswa</span>
+          </div>
+          <button type="button" class="close-sidebar-btn" id="closeSidebarBtn" aria-label="Tutup menu">
+            <i data-lucide="x" width="18" height="18"></i>
+          </button>
+        </div>
+
+        <div class="profile-box">
+          <div class="profile-avatar-icon">
+            <i data-lucide="graduation-cap" width="18" height="18"></i>
+          </div>
+          <div class="profile-meta">
+            <strong id="sidebarUserName">Mahasiswa</strong>
+            <span id="sidebarUserRole">Ilmu Komputer UB</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="layout-grid" width="17" height="17"></i> Dashboard
+          </a>
+          <a href="goals.html" class="nav-item">
+            <i data-lucide="target" width="17" height="17"></i> Saving Goals
+          </a>
+          <a href="goal-detail.html" class="nav-item">
+            <i data-lucide="circle-dot" width="17" height="17"></i> Detail Target
+          </a>
+          <a href="report.html" class="nav-item active">
+            <i data-lucide="trending-up" width="17" height="17"></i> Saving Report
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="challenge-widget">
+          <div class="cw-top">
+            <span class="cw-icon"><i data-lucide="leaf" width="16" height="16"></i></span>
+            <div>
+              <strong>Tantangan Pekan Ini</strong>
+              <p>Hemat Boba: +Rp 25.000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-settings-card">
+          <div class="ssc-target-row">
+            <span>Target Tercapai</span>
+            <strong id="sidebarTargetRatio">0 / 0</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="sidebarTargetBar" style="width: 0%;"></div>
+          </div>
+          <a href="settings.html" class="sidebar-settings-link">
+            <i data-lucide="settings" width="16" height="16"></i> Settings / Pengaturan
+          </a>
+        </div>
+
+        <div class="semester-footer">
+          <span>Semester Genap 2026</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Konten Utama -->
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <i data-lucide="menu" width="20" height="20"></i>
+          </button>
+          <div class="tagline-pill">
+            <span class="green-dot"></span> Mindful Budgeting & Growth Tracker
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="verified-badge">
+            <i data-lucide="badge-check" width="14" height="14"></i> UI Verified Student
+          </span>
+          <button type="button" class="icon-btn" id="btnNotifBell" title="Pengingat Target">
+            <i data-lucide="bell" width="17" height="17"></i>
+          </button>
+          <div class="user-pill" id="logoutBtn" title="Klik untuk keluar / ganti akun">
+            <div class="user-avatar" id="topAvatarInitials">SG</div>
+            <div class="user-text">
+              <strong id="topUserName">User</strong>
+              <span class="online-status">Online</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Header Laporan -->
+        <section class="report-header">
+          <div class="rh-left">
+            <div class="rh-tags">
+              <span class="badge-cream" id="repUpdatedDate">Diperbarui Hari Ini</span>
+            </div>
+            <h1>Laporan & Analisis Menabung Mahasiswa</h1>
+            <p>Evaluasi perkembangan finansial, tren menabung, dan evaluasi konsumsi bijakmu.</p>
+          </div>
+
+          <div class="rh-actions">
+            <div class="period-select-wrap">
+              <i data-lucide="calendar" width="15" height="15"></i>
+              <select id="periodFilterSelect">
+                <option value="6m" selected>6 Bulan Terakhir</option>
+                <option value="3m">3 Bulan Terakhir</option>
+                <option value="1y">1 Tahun Terakhir</option>
+              </select>
+            </div>
+            <button type="button" class="btn-download-pdf" id="btnDownloadPdf">
+              <i data-lucide="download" width="15" height="15"></i> Unduh Laporan PDF
+            </button>
+          </div>
+        </section>
+
+        <!-- 4 Kartu Metrik Utama -->
+        <section class="report-kpi-grid">
+          <div class="rk-card">
+            <div class="rk-head">
+              <span>Akumulasi Tabungan</span>
+              <span class="rk-icon"><i data-lucide="wallet" width="15" height="15"></i></span>
+            </div>
+            <div class="rk-val" id="repAccumulation"><small>Rp</small>0</div>
+            <div class="rk-foot">
+              <span class="rk-pill-green" id="repGrowthBadge">0%</span>
+              <span id="repGrowthSub">pertumbuhan bulan ini</span>
+            </div>
+          </div>
+
+          <div class="rk-card">
+            <div class="rk-head">
+              <span>Keberhasilan Target</span>
+              <span class="rk-icon"><i data-lucide="check-circle-2" width="15" height="15"></i></span>
+            </div>
+            <div class="rk-inline-val">
+              <strong id="repSuccessPct">0%</strong>
+              <span id="repSuccessStatus">Belum ada target</span>
+            </div>
+            <div class="progress-track" style="margin-top:6px;">
+              <div class="progress-fill" id="repSuccessBar" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="rk-card">
+            <div class="rk-head">
+              <span>Dana Terhemat (Habits)</span>
+              <span class="rk-icon"><i data-lucide="piggy-bank" width="15" height="15"></i></span>
+            </div>
+            <div class="rk-val" id="repHabitSaved"><small>Rp</small>0</div>
+            <div class="rk-foot">
+              <span class="rk-pill-cream" id="repHabitCount">0 Setoran Mikro</span>
+              <span>Dari kebiasaan hemat</span>
+            </div>
+          </div>
+
+          <div class="rk-card">
+            <div class="rk-head">
+              <span>Rata-Rata Tabungan</span>
+              <span class="rk-icon"><i data-lucide="calendar-range" width="15" height="15"></i></span>
+            </div>
+            <div class="rk-val" id="repWeeklyAvg"><small>Rp</small>0</div>
+            <p class="rk-sub" id="repWeeklySub">Rata-rata setoran per pekan</p>
+          </div>
+        </section>
+
+        <!-- Tengah: Grafik Perkembangan + Profil Mindful Thought -->
+        <section class="report-chart-grid">
+          <div class="chart-panel">
+            <div class="cp-header">
+              <div>
+                <h3>Grafik Perkembangan Jumlah Tabungan</h3>
+                <p id="chartRangeSubtitle">Visualisasi akumulatif setoran tabungan bulanan</p>
+              </div>
+              <div class="cp-legend">
+                <span><i class="dot-olive"></i> Tabungan Rutin</span>
+                <span><i class="dot-lime"></i> Gamified Habits</span>
+              </div>
+            </div>
+
+            <!-- Grafik SVG + Batang Interaktif -->
+            <div class="chart-canvas-box" id="growthChartContainer"></div>
+
+            <!-- Banner Insight Konsistensi Otomatis -->
+            <div class="consistency-banner" id="consistencyBanner">
+              <div class="cb-left">
+                <div class="cb-icon"><i data-lucide="trending-up" width="18" height="18"></i></div>
+                <div>
+                  <strong id="cbTitle">Mulai Catat Setoran Pertamamu</strong>
+                  <p id="cbDesc">Grafik perkembangan dan efisiensi menabung akan terhitung otomatis dari riwayat transaksimu.</p>
+                </div>
+              </div>
+              <span class="cb-badge" id="cbBadge">0% Efisiensi</span>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Profil User, Gambar Toples Tabungan & Komposisi Alokasi Simpanan -->
+          <div class="mindful-side-card">
+            <div class="msc-profile">
+              <div class="msc-avatar" id="repProfileAvatar">SG</div>
+              <div>
+                <strong id="repProfileName">Mahasiswa</strong>
+                <span id="repProfileMeta">Ilmu Komputer UB • Semester Genap 2026</span>
+              </div>
+            </div>
+
+            <div class="msc-banner-img">
+              <img src="img/save-jar.jpeg" alt="Save Jar" onerror="this.parentElement.style.display='none'" />
+            </div>
+
+            <div class="msc-quote-box">
+              <span class="msc-eyebrow">MINDFUL THOUGHT</span>
+              <blockquote>
+                “Menabung bukan soal menahan lapar, tapi menyadari ke mana perginya tiap rupiah kecil yang bisa dialihkan untuk bekal masa depan.”
+              </blockquote>
+            </div>
+
+            <div class="msc-donut-section">
+              <h4>Komposisi Alokasi Simpanan</h4>
+              <div class="msc-donut-row">
+                <div class="mini-donut" id="repMiniDonut">
+                  <div class="mini-donut-hole" id="repDonutHole">0%</div>
+                </div>
+                <div class="mini-donut-legends" id="repDonutLegends">
+                  <span style="font-size:12px;">Belum ada pos tabungan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ringkasan Pencapaian Tabungan & Status Target -->
+        <section class="achievements-section">
+          <div class="ach-header">
+            <div>
+              <h2>Ringkasan Pencapaian Tabungan & Status Target</h2>
+              <p id="achSubtitle">Peta kemajuan finansial per masing-masing pos tabungan aktifmu.</p>
+            </div>
+            <div class="ach-badges">
+              <span class="badge-mint" id="achCountBadge">0 Pos Terdaftar</span>
+              <span class="badge-cream" id="achPctBadge">Target Tercapai: 0%</span>
+            </div>
+          </div>
+
+          <div class="ach-cards-grid" id="achievementCardsGrid"></div>
+        </section>
+
+        <!-- Bawah 2 Kolom: Distribusi Alokasi & Ringkasan Statistik Tabungan -->
+        <section class="report-bottom-grid">
+          <div class="alloc-panel">
+            <div class="ap-top">
+              <div>
+                <span class="ap-eyebrow">TRANSPARANSI ALOKASI DANA</span>
+                <h3>Distribusi Alokasi Berdasarkan Pos Target Tabungan</h3>
+              </div>
+              <span class="ap-total-pill" id="allocTotalPill">Total Setoran: Rp 0</span>
+            </div>
+            <p class="ap-desc">
+              Pembagian riwayat dana aktual yang berhasil disisihkan dan dialokasikan ke masing-masing pos tabungan aktif:
+            </p>
+            <div class="alloc-list" id="allocationList"></div>
+          </div>
+
+          <div class="stats-summary-panel">
+            <div class="ssp-header">
+              <h3><i data-lucide="bar-chart-3" width="16" height="16"></i> Ringkasan Statistik Tabungan</h3>
+              <span class="badge-mint">Audit Semester</span>
+            </div>
+            <p class="ssp-desc">
+              Data historis agregat berdasarkan ketepatan jadwal dan catatan transaksi tabungan terverifikasi:
+            </p>
+
+            <div class="ssp-items">
+              <div class="ssp-row">
+                <div class="ssp-left">
+                  <div class="ssp-icon"><i data-lucide="calculator" width="16" height="16"></i></div>
+                  <div>
+                    <strong>Rata-Rata Nominal Setoran</strong>
+                    <span>Dihitung per transaksi masuk</span>
+                  </div>
+                </div>
+                <strong class="ssp-val" id="statAvgDeposit">Rp 0</strong>
+              </div>
+
+              <div class="ssp-row">
+                <div class="ssp-left">
+                  <div class="ssp-icon"><i data-lucide="star" width="16" height="16"></i></div>
+                  <div>
+                    <strong>Pos Setoran Terbanyak</strong>
+                    <span>Frekuensi & total akumulasi</span>
+                  </div>
+                </div>
+                <div class="ssp-right-stack">
+                  <strong id="statTopGoalName">-</strong>
+                  <span id="statTopGoalAmount">Rp 0</span>
+                </div>
+              </div>
+
+              <div class="ssp-row">
+                <div class="ssp-left">
+                  <div class="ssp-icon"><i data-lucide="calendar-check-2" width="16" height="16"></i></div>
+                  <div>
+                    <strong>Ketepatan Waktu Jadwal</strong>
+                    <span>Kepatuhan tenggat tabungan</span>
+                  </div>
+                </div>
+                <strong class="ssp-val green" id="statOnTimePct">0% Tepat Waktu</strong>
+              </div>
+            </div>
+
+            <div class="ssp-footer">
+              <span>Sinkronisasi Rekening: Aktif</span>
+              <span class="verified-text">● Terverifikasi</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/report.js?v=5"></script>
+</body>
+</html>

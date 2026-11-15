@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Target – Saving Goals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/goal-detail.css" />
+  <link rel="stylesheet" href="css/dashboard.css?v=4" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar Kiri -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-info">
+            <span class="brand-name">Saving Goals</span>
+            <span class="brand-role">Platform Mahasiswa</span>
+          </div>
+          <button type="button" class="close-sidebar-btn" id="closeSidebarBtn" aria-label="Tutup menu">
+            <i data-lucide="x" width="18" height="18"></i>
+          </button>
+        </div>
+
+        <div class="profile-box">
+          <div class="profile-avatar-icon">
+            <i data-lucide="graduation-cap" width="18" height="18"></i>
+          </div>
+          <div class="profile-meta">
+            <strong id="sidebarUserName">Mahasiswa</strong>
+            <span id="sidebarUserRole">Ilmu Komputer UB</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="layout-grid" width="17" height="17"></i> Dashboard
+          </a>
+          <a href="goals.html" class="nav-item">
+            <i data-lucide="target" width="17" height="17"></i> Saving Goals
+          </a>
+          <a href="goal-detail.html" class="nav-item active">
+            <i data-lucide="circle-dot" width="17" height="17"></i> Detail Target
+          </a>
+          <a href="report.html" class="nav-item">
+            <i data-lucide="trending-up" width="17" height="17"></i> Saving Report
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="challenge-widget">
+          <div class="cw-top">
+            <span class="cw-icon"><i data-lucide="leaf" width="16" height="16"></i></span>
+            <div>
+              <strong>Tantangan Pekan Ini</strong>
+              <p>Hemat Boba: +Rp 25.000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-settings-card">
+          <div class="ssc-target-row">
+            <span>Target Tercapai</span>
+            <strong id="sidebarTargetRatio">0 / 0</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="sidebarTargetBar" style="width: 0%;"></div>
+          </div>
+          <a href="settings.html" class="sidebar-settings-link">
+            <i data-lucide="settings" width="16" height="16"></i> Settings / Pengaturan
+          </a>
+        </div>
+
+        <div class="semester-footer">
+          <span>Semester Genap 2026</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Konten Utama -->
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <i data-lucide="menu" width="20" height="20"></i>
+          </button>
+          <div class="tagline-pill">
+            <span class="green-dot"></span> Mindful Budgeting & Growth Tracker
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="verified-badge">
+            <i data-lucide="badge-check" width="14" height="14"></i> UI Verified Student
+          </span>
+          <button type="button" class="icon-btn" id="btnNotifBell" title="Pengingat Target">
+            <i data-lucide="bell" width="17" height="17"></i>
+          </button>
+          <div class="user-pill" id="logoutBtn" title="Klik untuk keluar / ganti akun">
+            <div class="user-avatar" id="topAvatarInitials">SG</div>
+            <div class="user-text">
+              <strong id="topUserName">User</strong>
+              <span class="online-status">Online</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Empty State saat user belum punya target -->
+        <section id="emptyDetailState" style="display:none; background:rgba(255,255,255,0.9); border:1px solid rgba(255,255,255,0.95); border-radius:20px; padding:42px 24px; text-align:center;">
+          <div style="width:48px; height:48px; border-radius:14px; background:var(--mint-soft); color:var(--olive-dark); display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px;">
+            <i data-lucide="target" width="24" height="24"></i>
+          </div>
+          <h2 style="font-size:18px; font-weight:800; margin-bottom:6px;">Belum Ada Target Tabungan</h2>
+          <p style="font-size:13px; color:#64748b; max-width:440px; margin:0 auto 18px; line-height:1.55;">
+            Buat target tabungan pertamamu di halaman Saving Goals untuk melihat rincian progres, milestones, dan riwayat setoran di sini.
+          </p>
+          <a href="goals.html" class="btn-submit-detail" style="display:inline-flex; width:auto; padding:11px 22px; font-size:13px; text-decoration:none;">
+            + Buat Target Tabungan Baru
+          </a>
+        </section>
+
+        <!-- Konten Detail Target (aktif jika sudah punya minimal 1 target) -->
+        <div id="detailActiveWrapper" style="display:none; flex-direction:column; gap:18px;">
+          <!-- Breadcrumb & Tombol Aksi -->
+          <section class="detail-top-nav">
+            <div class="breadcrumb-area">
+              <div class="breadcrumb-trail">
+                <a href="goals.html">Saving Goals</a>
+                <span>/</span>
+                <span>Detail Target</span>
+                <span>/</span>
+                <strong id="bcGoalTitle">Target Tabungan</strong>
+              </div>
+              <a href="goals.html" class="back-link">
+                <i data-lucide="arrow-left" width="14" height="14"></i> Kembali ke Daftar Target
+              </a>
+            </div>
+
+            <div class="detail-header-actions">
+              <button type="button" class="btn-outline-pill" id="btnEditTarget">
+                <i data-lucide="pencil" width="14" height="14"></i> Edit Target
+              </button>
+              <button type="button" class="btn-outline-pill danger" id="btnDeleteTarget">
+                <i data-lucide="trash-2" width="14" height="14"></i> Hapus Target
+              </button>
+            </div>
+          </section>
+
+          <!-- Kartu Hero Detail Target -->
+          <section class="hero-detail-card">
+            <div class="hdc-top">
+              <div class="hdc-title-group">
+                <div class="hdc-icon"><i data-lucide="target" width="22" height="22"></i></div>
+                <div>
+                  <div class="hdc-badges">
+                    <span class="badge-mint" id="detailCatBadge">Target Tabungan</span>
+                    <span class="badge-cream"><i data-lucide="zap" width="11" height="11"></i> Prioritas Aktif</span>
+                  </div>
+                  <h1 id="detailGoalTitle">Target Tabungan</h1>
+                </div>
+              </div>
+
+              <div class="hdc-eta-box">
+                <div class="eta-item">
+                  <i data-lucide="clock" width="16" height="16"></i>
+                  <div>
+                    <small>Estimasi Sisa Waktu</small>
+                    <strong id="detailDaysLeft">-</strong>
+                  </div>
+                </div>
+                <div class="eta-divider"></div>
+                <div class="eta-item">
+                  <div>
+                    <small>Target Rampung</small>
+                    <strong id="detailDeadline">Fleksibel</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 Kotak Nominal -->
+            <div class="hdc-stats-row">
+              <div class="hdc-stat-box mint">
+                <span>Terkumpul Saat Ini</span>
+                <strong id="detailSavedAmount">Rp 0</strong>
+                <small id="detailPctSub">0% dari sasaran</small>
+              </div>
+              <div class="hdc-stat-box cream">
+                <span>Kekurangan Dana</span>
+                <strong id="detailRemainingAmount">Rp 0</strong>
+                <small>Dapat dicicil teratur</small>
+              </div>
+              <div class="hdc-stat-box neutral">
+                <span>Total Nilai Sasaran</span>
+                <strong id="detailTargetAmount">Rp 0</strong>
+                <small>Target tabunganmu</small>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="hdc-progress-wrap">
+              <div class="hdc-progress-labels">
+                <span>Status Kemajuan Terverifikasi</span>
+                <strong id="detailProgressPct">0.0% Selesai</strong>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="detailProgressBar" style="width: 0%;"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section Tahapan Pencapaian (Milestones) -->
+          <section class="milestones-section">
+            <div class="section-header">
+              <h2><i data-lucide="flag" width="17" height="17"></i> Tahapan Pencapaian (Milestones)</h2>
+              <span class="milestone-summary-pill" id="milestoneCountPill">Tahap 0 dari 4 Selesai</span>
+            </div>
+
+            <div class="milestones-grid" id="milestonesGrid"></div>
+          </section>
+
+          <!-- Section Bawah 2 Kolom -->
+          <section class="detail-bottom-grid">
+            <!-- Kiri: Form Catat Uang yang Ditabung -->
+            <div class="record-saving-card">
+              <div class="rsc-header">
+                <div class="rsc-icon"><i data-lucide="plus-circle" width="20" height="20"></i></div>
+                <div>
+                  <h3>Catat Uang yang Ditabung</h3>
+                  <p>Setoran mikro harian membuat target nyata</p>
+                </div>
+              </div>
+
+              <form id="detailSaveForm" class="rsc-form">
+                <div class="form-field">
+                  <label for="detailAmountInput">Nominal Tabungan (Rp)</label>
+                  <div class="amount-input-wrap">
+                    <span>Rp</span>
+                    <input type="text" id="detailAmountInput" value="50.000" required />
+                  </div>
+                  <div class="preset-chips">
+                    <button type="button" class="p-chip" data-val="10000">+10rb</button>
+                    <button type="button" class="p-chip" data-val="20000">+20rb</button>
+                    <button type="button" class="p-chip active" data-val="50000">+50rb</button>
+                    <button type="button" class="p-chip" data-val="100000">+100rb</button>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="detailGoalSelect">Masukkan ke Target Tabungan Mana:</label>
+                  <select id="detailGoalSelect" class="detail-select"></select>
+                </div>
+
+                <div class="form-field">
+                  <label>Metode / Sumber Dana</label>
+                  <div class="method-grid" id="methodGrid">
+                    <button type="button" class="method-btn active" data-method="Transfer Bank">
+                      <i data-lucide="landmark" width="16" height="16"></i>
+                      <span>Transfer Bank</span>
+                    </button>
+                    <button type="button" class="method-btn" data-method="E-Wallet">
+                      <i data-lucide="smartphone" width="16" height="16"></i>
+                      <span>E-Wallet</span>
+                    </button>
+                    <button type="button" class="method-btn" data-method="Uang Tunai">
+                      <i data-lucide="banknote" width="16" height="16"></i>
+                      <span>Uang Tunai</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="detailNoteInput">Catatan Setoran (Opsional)</label>
+                  <textarea id="detailNoteInput" rows="2" placeholder="Tulis catatan setoran tabungan jika ada..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit-detail">
+                  <i data-lucide="wallet" width="17" height="17"></i> Simpan ke Target Tabungan
+                </button>
+              </form>
+            </div>
+
+            <!-- Kanan: 2 Mini Stats + Riwayat Tabungan -->
+            <div class="history-column">
+              <div class="mini-stats-pair">
+                <div class="mini-stat-card">
+                  <div class="ms-icon"><i data-lucide="calendar-check" width="18" height="18"></i></div>
+                  <div>
+                    <small>Frekuensi Menabung</small>
+                    <strong id="freqCountText">0 Kali Setoran</strong>
+                    <span>Disiplin konsisten</span>
+                  </div>
+                </div>
+
+                <div class="mini-stat-card">
+                  <div class="ms-icon"><i data-lucide="trending-up" width="18" height="18"></i></div>
+                  <div>
+                    <small>Rata-rata Setoran</small>
+                    <strong id="avgDepositText">Rp 0</strong>
+                    <span>Per transaksi masuk</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="history-panel">
+                <div class="hp-header">
+                  <h3><i data-lucide="history" width="17" height="17"></i> Riwayat Tabungan</h3>
+                  <div class="hp-filters">
+                    <button type="button" class="hp-tab active" data-range="all">Semua</button>
+                    <button type="button" class="hp-tab" data-range="month">Bulan Ini</button>
+                  </div>
+                </div>
+
+                <div class="tx-list" id="txHistoryList"></div>
+
+                <button type="button" class="btn-show-more" id="btnToggleMoreTx" style="display:none;">
+                  Tampilkan riwayat lainnya ⌄
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/goal-detail.js"></script>
+</body>
+</html>

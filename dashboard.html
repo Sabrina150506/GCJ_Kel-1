@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – Saving Goals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dashboard.css?v=4" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar Kiri -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="sidebar-brand">
+          <div class="brand-info">
+            <span class="brand-name">Saving Goals</span>
+            <span class="brand-role">Platform Mahasiswa</span>
+          </div>
+          <button type="button" class="close-sidebar-btn" id="closeSidebarBtn" aria-label="Tutup menu">
+            <i data-lucide="x" width="18" height="18"></i>
+          </button>
+        </div>
+
+        <div class="profile-box">
+          <div class="profile-avatar-icon">
+            <i data-lucide="graduation-cap" width="18" height="18"></i>
+          </div>
+          <div class="profile-meta">
+            <strong id="sidebarUserName">Mahasiswa</strong>
+            <span>Ilmu Komputer UB</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item active">
+            <i data-lucide="layout-grid" width="17" height="17"></i> Dashboard
+          </a>
+          <a href="goals.html" class="nav-item">
+            <i data-lucide="target" width="17" height="17"></i> Saving Goals
+          </a>
+          <a href="goal-detail.html" class="nav-item">
+            <i data-lucide="circle-dot" width="17" height="17"></i> Detail Target
+          </a>
+          <a href="report.html" class="nav-item">
+            <i data-lucide="trending-up" width="17" height="17"></i> Saving Report
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="challenge-widget">
+          <div class="cw-top">
+            <span class="cw-icon"><i data-lucide="leaf" width="16" height="16"></i></span>
+            <div>
+              <strong>Tantangan Pekan Ini</strong>
+              <p>Hemat Boba: +Rp 25.000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-settings-card">
+          <div class="ssc-target-row">
+            <span>Target Tercapai</span>
+            <strong id="sidebarTargetRatio">0 / 0</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="sidebarTargetBar" style="width: 0%;"></div>
+          </div>
+          <a href="settings.html" class="sidebar-settings-link">
+            <i data-lucide="settings" width="16" height="16"></i> Settings / Pengaturan
+          </a>
+        </div>
+
+        <div class="semester-footer">
+          <span>Semester Genap 2026</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Konten Utama -->
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <i data-lucide="menu" width="20" height="20"></i>
+          </button>
+          <div class="tagline-pill">
+            <span class="green-dot"></span> Mindful Budgeting & Growth Tracker
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="verified-badge">
+            <i data-lucide="badge-check" width="14" height="14"></i> UI Verified Student
+          </span>
+          <button type="button" class="icon-btn" id="btnNotifBell" title="Pengingat Target">
+            <i data-lucide="bell" width="17" height="17"></i>
+          </button>
+          <div class="user-pill" id="logoutBtn" title="Klik untuk keluar / ganti akun">
+            <div class="user-avatar" id="topAvatarInitials">SG</div>
+            <div class="user-text">
+              <strong id="topUserName">User</strong>
+              <span class="online-status">Online</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Banner Sapaan -->
+        <section class="welcome-banner">
+          <div class="welcome-text">
+            <span class="week-chip">● Refleksi Keuangan Pekan Ini</span>
+            <h1 id="greetingTitle">Halo!</h1>
+            <p>Langkah kecil hari ini untuk kebiasaan finansial yang bijak & berkelanjutan.</p>
+          </div>
+          <div class="welcome-actions">
+            <button type="button" class="btn-lime" id="btnFocusQuickSave">
+              <i data-lucide="plus-circle" width="17" height="17"></i> Tabung Sekarang
+            </button>
+            <button type="button" class="btn-white" id="btnAlokasiInfo">
+              <i data-lucide="sliders-horizontal" width="16" height="16"></i> Atur Alokasi
+            </button>
+          </div>
+        </section>
+
+        <!-- 4 Kartu Statistik Utama -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-head">
+              <span>Total Tabungan Terkumpul</span>
+              <span class="stat-badge-icon"><i data-lucide="wallet-cards" width="15" height="15"></i></span>
+            </div>
+            <div class="stat-big-number" id="totalSavedDisplay"><small>Rp</small>0</div>
+            <div class="stat-foot">
+              <span class="growth-pill">Real-time</span>
+              <span class="muted">dari seluruh target</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-head">
+              <span>Target Aktif</span>
+              <span class="stat-badge-icon"><i data-lucide="flag" width="15" height="15"></i></span>
+            </div>
+            <div class="stat-mid-row">
+              <strong class="stat-num" id="activeGoalsCount">0</strong>
+              <span>Sasaran Berjalan</span>
+            </div>
+            <p class="stat-sub" id="avgProgressText">Belum ada sasaran aktif</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-head">
+              <span>Penghematan Mindful</span>
+              <span class="stat-badge-icon"><i data-lucide="leaf" width="15" height="15"></i></span>
+            </div>
+            <div class="stat-mid-number" id="mindfulSavedDisplay">Rp 0</div>
+            <p class="stat-sub">Akumulasi setoran mikro terkumpul</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-head">
+              <span>Streak Disiplin</span>
+              <span class="active-chip"><i data-lucide="zap" width="12" height="12"></i> Aktif</span>
+            </div>
+            <div class="stat-mid-row">
+              <strong class="stat-num" id="streakDays">0</strong>
+              <span>Hari Beruntun</span>
+            </div>
+            <p class="stat-sub highlight-green">Konsistensi menabung harian</p>
+          </div>
+        </section>
+
+        <!-- Layout Utama 2 Kolom Mandiri -->
+        <section class="middle-grid">
+          <div class="left-column">
+            <div class="goals-column">
+              <div class="section-header">
+                <h2><span class="bar-accent"></span> Progres Tabungan yang Sedang Berjalan</h2>
+                <a href="goals.html" class="see-all-link">Lihat Semua (<span id="totalGoalsLink">0</span>) →</a>
+              </div>
+
+              <div class="goals-list" id="goalsListContainer"></div>
+            </div>
+
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3>Aktivitas Micro-Saving Terakhir</h3>
+                <span class="realtime-tag">Real-time update</span>
+              </div>
+              <div class="activity-list" id="activityList"></div>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="quick-save-card" id="quickSaveCard">
+              <h3><i data-lucide="zap" width="16" height="16"></i> Catatan Cepat Micro-Budgeting</h3>
+              <p class="qs-desc">
+                Punya sisa kembalian atau uang jajan hari ini? Sisihkan langsung ke pos targetmu tanpa menunggu akhir bulan.
+              </p>
+
+              <form id="quickSaveForm">
+                <label class="qs-label" for="quickAmount">Nominal Tabungan Kilat</label>
+                <div class="qs-input-box">
+                  <span>Rp</span>
+                  <input type="text" id="quickAmount" value="20.000" required />
+                </div>
+
+                <div class="preset-row">
+                  <button type="button" class="preset-btn" data-val="10000">+10 Ribu</button>
+                  <button type="button" class="preset-btn active" data-val="20000">+20 Ribu</button>
+                  <button type="button" class="preset-btn" data-val="50000">+50 Ribu</button>
+                </div>
+
+                <label class="qs-label" for="targetSelect">Alokasikan Masuk Ke:</label>
+                <select id="targetSelect" class="qs-select"></select>
+
+                <button type="submit" class="btn-qs-submit">
+                  <i data-lucide="piggy-bank" width="18" height="18"></i> Sisihkan ke Tabungan
+                </button>
+              </form>
+            </div>
+
+            <div class="mindset-card">
+              <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
+                alt="Mindset Mahasiswa"
+              />
+              <div class="mindset-overlay">
+                <span class="mindset-badge"><i data-lucide="lightbulb" width="12" height="12"></i> Mindset Mahasiswa</span>
+                <blockquote>
+                  “Bukan seberapa besar nominalnya, tapi konsistensi menyisihkan sebelum menghabiskan.”
+                </blockquote>
+                <cite>Buku Pintar Anggaran Kampus</cite>
+              </div>
+            </div>
+
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3>Distribusi Tabungan</h3>
+                <span class="pie-icon"><i data-lucide="pie-chart" width="17" height="17"></i></span>
+              </div>
+
+              <div class="donut-wrapper">
+                <div class="donut-chart" id="donutChart">
+                  <div class="donut-hole">
+                    <strong id="donutTotalText">Rp 0</strong>
+                    <span>Teralokasi Rapi</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="legend-list" id="legendList"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/dashboard.js?v=4"></script>
+</body>
+</html>

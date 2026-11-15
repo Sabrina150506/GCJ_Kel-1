@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengaturan & Akun – Saving Goals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dashboard.css?v=5" />
+  <link rel="stylesheet" href="css/settings.css?v=5" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar Kiri -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="sidebar-brand">
+          <div class="brand-logo-wrap">
+            <div class="brand-lime-icon"><i data-lucide="piggy-bank" width="19" height="19"></i></div>
+            <div class="brand-info">
+              <span class="brand-name">Saving Goals</span>
+              <span class="brand-role">MAHASISWA</span>
+            </div>
+          </div>
+          <button type="button" class="close-sidebar-btn" id="closeSidebarBtn" aria-label="Tutup menu">
+            <i data-lucide="x" width="18" height="18"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="layout-grid" width="17" height="17"></i> Dashboard
+          </a>
+          <a href="goals.html" class="nav-item">
+            <i data-lucide="target" width="17" height="17"></i> Saving Goals
+          </a>
+          <a href="goal-detail.html" class="nav-item">
+            <i data-lucide="flag" width="17" height="17"></i> Detail Target
+          </a>
+          <a href="report.html" class="nav-item">
+            <i data-lucide="trending-up" width="17" height="17"></i> Saving Report
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="target-active-widget">
+          <div class="taw-top">
+            <span>Target Tercapai</span>
+            <strong id="sidebarTargetRatio">0 / 0</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="sidebarTargetBar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <a href="settings.html" class="btn-settings-active">
+          <i data-lucide="settings" width="16" height="16"></i> Settings / Pengaturan
+        </a>
+      </div>
+    </aside>
+
+    <!-- Konten Utama -->
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <i data-lucide="menu" width="20" height="20"></i>
+          </button>
+          <span class="year-badge"><span class="green-dot"></span> 2026</span>
+        </div>
+
+        <div class="topbar-right">
+          <span class="verified-badge">
+            <i data-lucide="badge-check" width="14" height="14"></i> UI Verified Student
+          </span>
+          <button type="button" class="icon-btn" id="btnNotifBell" title="Pengingat Target">
+            <i data-lucide="bell" width="17" height="17"></i>
+          </button>
+          <div class="user-pill" id="logoutBtn" title="Klik untuk keluar / ganti akun">
+            <div class="user-avatar" id="topAvatarInitials" style="overflow:hidden;">SG</div>
+            <div class="user-text">
+              <strong id="topUserName">User</strong>
+              <span class="online-status">Online</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Header Pengaturan & Akun -->
+        <section class="settings-header">
+          <div>
+            <span class="sh-breadcrumb">Beranda &rsaquo; Pengaturan Profil</span>
+            <h1>Pengaturan & Akun</h1>
+          </div>
+
+          <div class="sh-actions">
+            <span class="status-active-pill">Aktif •</span>
+            <button type="button" class="btn-cancel-top" id="btnCancelTop">Batalkan</button>
+            <button type="button" class="btn-save-top" id="btnSaveTop">
+              <i data-lucide="check-circle-2" width="15" height="15"></i> Simpan Perubahan
+            </button>
+          </div>
+        </section>
+
+        <!-- Tab Sub-Navigasi (Aktif = Hijau + Font Putih) -->
+        <div class="settings-tabs" id="settingsTabs">
+          <button type="button" class="stab active" data-target="sec-akademik">
+            <i data-lucide="graduation-cap" width="15" height="15"></i> Profil Mahasiswa
+          </button>
+          <button type="button" class="stab" data-target="sec-preferensi">
+            <i data-lucide="wallet" width="15" height="15"></i> Preferensi Keuangan & Uang Saku
+          </button>
+          <button type="button" class="stab" data-target="sec-notifikasi">
+            <i data-lucide="bell-ring" width="15" height="15"></i> Notifikasi & Pengingat
+          </button>
+        </div>
+
+        <!-- Grid Utama 2 Kolom -->
+        <section class="settings-main-grid">
+          <!-- Kolom Kiri -->
+          <div class="settings-left-col">
+            <!-- Kartu Profil Mahasiswa -->
+            <div class="s-card profile-summary-card">
+              <div class="psc-avatar-wrap" id="avatarUploadTrigger" title="Klik untuk ganti foto profil" style="cursor:pointer;">
+                <div class="psc-avatar" id="cardAvatarDisplay" style="overflow:hidden;">SG</div>
+                <span class="psc-cam"><i data-lucide="camera" width="12" height="12"></i></span>
+                <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" />
+              </div>
+              <h2 id="cardProfileName">Mahasiswa <i data-lucide="badge-check" width="16" height="16" style="color:#467810;"></i></h2>
+              <span class="psc-npm" id="cardProfileNpm">-</span>
+              <span class="verified-badge"><i data-lucide="shield" width="12" height="12"></i> UI Verified Student</span>
+
+              <div class="psc-mini-stats">
+                <div class="psc-stat-box">
+                  <span>Target Selesai</span>
+                  <strong id="statCompletedGoals">0</strong>
+                </div>
+                <div class="psc-stat-box">
+                  <span>Saving Streak</span>
+                  <strong class="green" id="statSavingStreak">0 Hari</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kartu Mahasiswa Digital -->
+            <div class="digital-ktm-card">
+              <div class="ktm-overlay">
+                <div class="ktm-top">
+                  <span>KARTU MAHASISWA DIGITAL</span>
+                  <i data-lucide="nfc" width="16" height="16"></i>
+                </div>
+                <div class="ktm-bottom">
+                  <small id="ktmFaculty">Program Studi Ilmu Komputer</small>
+                  <strong id="ktmUniv">Universitas Brawijaya</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zona Kelola Akun -->
+            <div class="s-card zone-card" id="sec-zona">
+              <span class="zone-eyebrow">ZONA KELOLA AKUN</span>
+              <button type="button" class="zone-btn" id="btnExportCsv">
+                <div class="zb-left">
+                  <i data-lucide="download" width="16" height="16"></i>
+                  <span>Ekspor Data Tabungan (.CSV)</span>
+                </div>
+                <i data-lucide="chevron-right" width="15" height="15"></i>
+              </button>
+
+              <button type="button" class="zone-btn danger" id="btnResetData">
+                <div class="zb-left">
+                  <i data-lucide="rotate-ccw" width="16" height="16"></i>
+                  <span>Reset Target & Riwayat</span>
+                </div>
+                <i data-lucide="chevron-right" width="15" height="15"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan -->
+          <div class="settings-right-col">
+            <!-- 1. Data Akademik Mahasiswa -->
+            <div class="s-card" id="sec-akademik">
+              <div class="sc-header">
+                <div class="sc-title-group">
+                  <div class="sc-icon"><i data-lucide="graduation-cap" width="18" height="18"></i></div>
+                  <div>
+                    <h3>Data Akademik Mahasiswa</h3>
+                    <p>Terhubung secara otomatis dengan akun SSO Kampus</p>
+                  </div>
+                </div>
+                <span class="sso-pill-badge">SSO UI Aktif</span>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="sf-group">
+                  <label for="inpFullName">Nama Lengkap</label>
+                  <div class="sf-input">
+                    <input type="text" id="inpFullName" value="" />
+                    <i data-lucide="check-circle-2" width="15" height="15" style="color:#467810;"></i>
+                  </div>
+                </div>
+
+                <div class="sf-group">
+                  <label for="inpNpm">NIM / NPM UI</label>
+                  <div class="sf-input readonly">
+                    <input type="text" id="inpNpm" value="" readonly />
+                    <i data-lucide="lock" width="14" height="14"></i>
+                  </div>
+                </div>
+
+                <div class="sf-group">
+                  <label for="inpUniv">Universitas</label>
+                  <div class="sf-input">
+                    <input type="text" id="inpUniv" value="Universitas Brawijaya" />
+                  </div>
+                </div>
+
+                <div class="sf-group">
+                  <label for="inpFaculty">Fakultas & Program Studi</label>
+                  <div class="sf-input">
+                    <input type="text" id="inpFaculty" value="Ilmu Komputer" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="sf-group" style="margin-top: 12px;">
+                <label>Tahun Akademik & Semester</label>
+                <div class="semester-radio-grid" id="semesterGrid">
+                  <button type="button" class="sem-radio" data-sem="1">
+                    <span class="radio-dot"></span> 1
+                  </button>
+                  <button type="button" class="sem-radio" data-sem="2">
+                    <span class="radio-dot"></span> 2
+                  </button>
+                  <button type="button" class="sem-radio active" data-sem="3">
+                    <span class="radio-dot"></span> 3
+                  </button>
+                  <button type="button" class="sem-radio" data-sem="4">
+                    <span class="radio-dot"></span> 4
+                  </button>
+                  <button type="button" class="sem-radio" data-sem="5">
+                    <span class="radio-dot"></span> 5
+                  </button>
+                  <button type="button" class="sem-radio" data-sem="6+">
+                    <span class="radio-dot"></span> 6+
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Preferensi Uang Saku & Target -->
+            <div class="s-card" id="sec-preferensi">
+              <div class="sc-header">
+                <div class="sc-title-group">
+                  <div class="sc-icon"><i data-lucide="wallet" width="18" height="18"></i></div>
+                  <div>
+                    <h3>Preferensi Uang Saku & Target</h3>
+                    <p>Sesuaikan batas simpanan bulanan agar realistis untuk mahasiswa</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="allowance-row">
+                <div class="sf-group">
+                  <label for="inpAllowance">Rata-rata Uang Saku Bulanan</label>
+                  <div class="sf-input prefix">
+                    <span>Rp</span>
+                    <input type="text" id="inpAllowance" value="2.500.000" />
+                  </div>
+                  <small class="sf-hint">Uang kiriman orang tua + beasiswa / asdos</small>
+                </div>
+
+                <div class="monthly-alloc-box">
+                  <div class="mab-top">
+                    <span>Alokasi Tabungan Bulanan</span>
+                    <strong id="allocPctLabel">30%</strong>
+                  </div>
+                  <div class="mab-amount">
+                    <strong id="monthlyAllocDisplay">Rp 750.000</strong>
+                    <span>/ bulan</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sf-group" style="margin-top: 14px;">
+                <div class="slider-label-row">
+                  <label>Persentase Tabungan Otomatis</label>
+                  <span class="rec-safe">Rekomendasi Aman: 25% - 35%</span>
+                </div>
+                <input type="range" id="allocSlider" min="10" max="60" step="5" value="30" class="lime-slider" />
+                <div class="pct-presets" id="pctPresets">
+                  <button type="button" class="pct-btn" data-pct="20">20% (Ringan)</button>
+                  <button type="button" class="pct-btn active" data-pct="30">30% (Ideal)</button>
+                  <button type="button" class="pct-btn" data-pct="40">40% (Disiplin)</button>
+                  <button type="button" class="pct-btn" data-pct="50">50% (Hemat Ekstrem)</button>
+                </div>
+              </div>
+
+              <!-- Rekening / E-Wallet Penampungan Tabungan (Bisa Tambah, Edit & Hapus) -->
+              <div class="sf-group" style="margin-top: 14px;">
+                <div class="wallet-section-head">
+                  <label>Rekening / E-Wallet Penampungan Tabungan</label>
+                  <button type="button" class="btn-add-wallet" id="btnToggleWalletForm">
+                    <i data-lucide="plus" width="13" height="13"></i> Tambah Rekening
+                  </button>
+                </div>
+
+                <div class="wallet-cards-grid" id="walletGrid"></div>
+
+                <div class="wallet-editor-box" id="walletEditorBox" style="display:none;">
+                  <div class="we-grid">
+                    <div class="sf-group">
+                      <label>Nama Bank / E-Wallet</label>
+                      <div class="sf-input">
+                        <input type="text" id="inpWalletName" placeholder="Misal: BCA / BRI / GoPay" />
+                      </div>
+                    </div>
+                    <div class="sf-group">
+                      <label>Nomor Rekening / No. HP</label>
+                      <div class="sf-input">
+                        <input type="text" id="inpWalletNum" placeholder="Misal: 1234567890" />
+                      </div>
+                    </div>
+                    <div class="sf-group">
+                      <label>Label / Keterangan</label>
+                      <div class="sf-input">
+                        <input type="text" id="inpWalletTag" placeholder="Misal: Utama / Darurat" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="we-actions">
+                    <button type="button" class="btn-cancel-top" id="btnCancelWallet">Batal</button>
+                    <button type="button" class="btn-save-top" id="btnSaveWallet">Simpan Rekening</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Pengingat Kebiasaan Menabung -->
+            <div class="s-card" id="sec-notifikasi">
+              <div class="sc-header">
+                <div class="sc-title-group">
+                  <div class="sc-icon"><i data-lucide="bell" width="18" height="18"></i></div>
+                  <div>
+                    <h3>Pengingat Kebiasaan Menabung</h3>
+                    <p>Jadwal notifikasi ramah untuk menjaga konsistensi keuangan harian</p>
+                  </div>
+                </div>
+                <span class="sso-pill-badge" id="activeNotifCount">3 Notifikasi Aktif</span>
+              </div>
+
+              <div class="notif-list">
+                <div class="notif-row">
+                  <div class="nr-left">
+                    <div class="nr-icon"><i data-lucide="sun" width="16" height="16"></i></div>
+                    <div>
+                      <strong>Tantangan Harian Pagi Hari</strong>
+                      <span>Pengingat alokasi saku sebelum jadwal kuliah pertama</span>
+                    </div>
+                  </div>
+                  <div class="nr-right">
+                    <span class="time-pill">08:00 WIB</span>
+                    <label class="switch">
+                      <input type="checkbox" class="notif-toggle" checked />
+                      <span class="slider-round"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="notif-row">
+                  <div class="nr-left">
+                    <div class="nr-icon"><i data-lucide="moon" width="16" height="16"></i></div>
+                    <div>
+                      <strong>Sisihkan Kembalian Malam</strong>
+                      <span>Pembulatan sisa transaksi jajan kantin atau kopi hari ini</span>
+                    </div>
+                  </div>
+                  <div class="nr-right">
+                    <span class="time-pill">20:00 WIB</span>
+                    <label class="switch">
+                      <input type="checkbox" class="notif-toggle" checked />
+                      <span class="slider-round"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="notif-row">
+                  <div class="nr-left">
+                    <div class="nr-icon"><i data-lucide="mail" width="16" height="16"></i></div>
+                    <div>
+                      <strong>Ringkasan Tabungan Mingguan via Email</strong>
+                      <span id="notifEmailHint">Kirim evaluasi ke email akunmu setiap hari Minggu</span>
+                    </div>
+                  </div>
+                  <div class="nr-right">
+                    <span class="time-pill">Setiap Minggu</span>
+                    <label class="switch">
+                      <input type="checkbox" class="notif-toggle" checked />
+                      <span class="slider-round"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Aksi Bawah -->
+            <div class="settings-bottom-bar">
+              <button type="button" class="btn-delete-account" id="btnDeleteAccount">
+                <i data-lucide="trash-2" width="15" height="15"></i> Hapus Akun / Hapus Seluruh Data Target
+              </button>
+
+              <div class="sbb-right">
+                <button type="button" class="btn-cancel-top" id="btnCancelBottom">Batalkan</button>
+                <button type="button" class="btn-save-top" id="btnSaveBottom">
+                  <i data-lucide="save" width="15" height="15"></i> Simpan Perubahan
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/settings.js?v=5"></script>
+</body>
+</html>
